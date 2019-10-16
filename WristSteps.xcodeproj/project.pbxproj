@@ -125,12 +125,11 @@
 		4CBF55572357A5C60009AF09 /* WristSteps WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				4CBF55582357A5C60009AF09 /* ContentView.swift */,
-				4CBF555A2357A5C60009AF09 /* HostingController.swift */,
 				4CBF555C2357A5C60009AF09 /* ExtensionDelegate.swift */,
-				4CBF555E2357A5C60009AF09 /* NotificationController.swift */,
-				4CBF55602357A5C60009AF09 /* NotificationView.swift */,
-				4CBF55622357A5C60009AF09 /* ComplicationController.swift */,
+				4CBF555A2357A5C60009AF09 /* HostingController.swift */,
+				4CBF55582357A5C60009AF09 /* ContentView.swift */,
+				4CBF55792357A7090009AF09 /* Complication */,
+				4CBF55782357A6F90009AF09 /* Notification */,
 				4CBF55642357A5C70009AF09 /* Assets.xcassets */,
 				4CBF55692357A5C70009AF09 /* Info.plist */,
 				4CBF556A2357A5C70009AF09 /* PushNotificationPayload.apns */,
@@ -145,6 +144,23 @@
 				4CBF55672357A5C70009AF09 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4CBF55782357A6F90009AF09 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				4CBF555E2357A5C60009AF09 /* NotificationController.swift */,
+				4CBF55602357A5C60009AF09 /* NotificationView.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		4CBF55792357A7090009AF09 /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				4CBF55622357A5C60009AF09 /* ComplicationController.swift */,
+			);
+			path = Complication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
