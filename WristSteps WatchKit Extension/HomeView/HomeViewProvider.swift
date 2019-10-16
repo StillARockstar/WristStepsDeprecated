@@ -9,11 +9,25 @@
 import Foundation
 
 class HomeViewProvider: ObservableObject {
+    private let connector: HealthConnector
     @Published var steps = 0
 
-    init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [weak self] in
-            self?.steps = 100
+    init(connector: HealthConnector) {
+        self.connector = connector
+        connector.requestAuthorization { [weak self] _ in
+            self?.updateCurrentStepCount()
+        }
+    }
+
+    private func updateCurrentStepCount() {
+        connector.fetchCurrentStepCount { [weak self] (steps) in
+            DispatchQueue.main.async {
+                guard let steps = steps else {
+                    self?.steps = 0
+                    return
+                }
+                self?.steps = steps
+            }
         }
     }
 }

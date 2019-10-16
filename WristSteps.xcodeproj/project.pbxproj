@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
+		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
 		4CBF55452357A5C40009AF09 /* WristSteps WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4CBF554B2357A5C40009AF09 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55492357A5C40009AF09 /* Interface.storyboard */; };
 		4CBF554D2357A5C60009AF09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF554C2357A5C60009AF09 /* Assets.xcassets */; };
@@ -65,6 +67,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
+		4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		4CBF55402357A5C40009AF09 /* WristSteps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WristSteps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WristSteps WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBF554A2357A5C40009AF09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -89,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,12 +110,29 @@
 			path = HomeView;
 			sourceTree = "<group>";
 		};
+		4C5337A72357AB8600E3970E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4C5337A82357AB9C00E3970E /* HealthConnector.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C5337AB2357ABBB00E3970E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C5337AC2357ABBB00E3970E /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4CBF55392357A5C40009AF09 = {
 			isa = PBXGroup;
 			children = (
 				4CBF55482357A5C40009AF09 /* WristSteps WatchKit App */,
 				4CBF55572357A5C60009AF09 /* WristSteps WatchKit Extension */,
 				4CBF55412357A5C40009AF09 /* Products */,
+				4C5337AB2357ABBB00E3970E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -136,8 +159,10 @@
 		4CBF55572357A5C60009AF09 /* WristSteps WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */,
 				4CBF555C2357A5C60009AF09 /* ExtensionDelegate.swift */,
 				4CBF555A2357A5C60009AF09 /* HostingController.swift */,
+				4C5337A72357AB8600E3970E /* Model */,
 				4C5337A52357AB1700E3970E /* HomeView */,
 				4CBF55792357A7090009AF09 /* Complication */,
 				4CBF55782357A6F90009AF09 /* Notification */,
@@ -303,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBF555B2357A5C60009AF09 /* HostingController.swift in Sources */,
+				4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
@@ -455,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
@@ -480,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;

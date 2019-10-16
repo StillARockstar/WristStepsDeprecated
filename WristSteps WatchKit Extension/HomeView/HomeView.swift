@@ -18,6 +18,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(HomeViewProvider())
+        HomeView().environmentObject(HomeViewProvider(connector: HealthConnector.default))
     }
 }
