@@ -10,7 +10,10 @@ import Foundation
 
 class HomeViewProvider: ObservableObject {
     private let connector: HealthConnector
+    private let stepGoal = 10000
+
     @Published var steps = 0
+    @Published var stepPercent = 0
 
     init(connector: HealthConnector) {
         self.connector = connector
@@ -22,11 +25,10 @@ class HomeViewProvider: ObservableObject {
     private func updateCurrentStepCount() {
         connector.fetchCurrentStepCount { [weak self] (steps) in
             DispatchQueue.main.async {
-                guard let steps = steps else {
-                    self?.steps = 0
-                    return
-                }
-                self?.steps = steps
+                guard let self = self else { return }
+                self.steps = steps ?? 0
+                let calculatedPercent = Double(self.steps) / Double(self.stepGoal)
+                self.stepPercent = Int(calculatedPercent * 100)
             }
         }
     }

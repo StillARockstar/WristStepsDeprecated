@@ -12,7 +12,10 @@ struct HomeView: View {
     @EnvironmentObject var provider: HomeViewProvider
 
     var body: some View {
-        Text("\(provider.steps)")
+        VStack {
+            CurrentStepView(stepPercent: provider.stepPercent,stepCount: provider.steps)
+            Spacer()
+        }
     }
 }
 
