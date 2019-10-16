@@ -19,17 +19,27 @@ class HomeViewProvider: ObservableObject {
         self.connector = connector
         connector.requestAuthorization { [weak self] _ in
             self?.updateCurrentStepCount()
+            self?.registerObserver()
         }
     }
 
     private func updateCurrentStepCount() {
         connector.fetchCurrentStepCount { [weak self] (steps) in
-            DispatchQueue.main.async {
-                guard let self = self else { return }
-                self.steps = steps ?? 0
-                let calculatedPercent = Double(self.steps) / Double(self.stepGoal)
-                self.stepPercent = Int(calculatedPercent * 100)
-            }
+            self?.handle(stepCount: steps)
+        }
+    }
+
+    private func registerObserver() {
+        connector.registerObserver { [weak self] (steps) in
+            self?.handle(stepCount: steps)
+        }
+    }
+
+    private func handle(stepCount: Int?) {
+        DispatchQueue.main.async {
+            self.steps = stepCount ?? 0
+            let calculatedPercent = Double(self.steps) / Double(self.stepGoal)
+            self.stepPercent = Int(calculatedPercent * 100)
         }
     }
 }

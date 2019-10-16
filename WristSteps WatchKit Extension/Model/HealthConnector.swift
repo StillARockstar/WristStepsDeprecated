@@ -17,7 +17,7 @@ class HealthConnector {
     private let healthStore: HKHealthStore
     private let stepCountType: HKQuantityType
     private let dataToRead: Set<HKQuantityType>
-    private var observerQuery: Int?
+    private var observerQuery: HKObserverQuery?
 
     init() {
         healthStore = HKHealthStore()
@@ -32,6 +32,17 @@ class HealthConnector {
             }
             completion?(succes)
         }
+    }
+
+    func registerObserver(updateBlock: @escaping ((Int?) -> Void)) {
+        if let observerQuery = observerQuery {
+            healthStore.stop(observerQuery)
+        }
+
+        observerQuery = HKObserverQuery(sampleType: stepCountType, predicate: nil, updateHandler: { [weak self] (_, _, _) in
+            self?.fetchCurrentStepCount(completion: updateBlock)
+        })
+        healthStore.execute(observerQuery!)
     }
 
     func fetchCurrentStepCount(completion: @escaping ((Int?) -> Void)) {
