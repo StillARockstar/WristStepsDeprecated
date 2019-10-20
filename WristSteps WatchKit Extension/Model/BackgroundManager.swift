@@ -1,0 +1,40 @@
+//
+//  BackgroundManager.swift
+//  WristSteps WatchKit Extension
+//
+//  Created by Michael Schoder on 20.10.19.
+//  Copyright © 2019 Michael Schoder. All rights reserved.
+//
+
+import Foundation
+import WatchKit
+
+class BackgroundManager {
+    static var shared: BackgroundManager = {
+        return BackgroundManager()
+    }()
+
+    func scheduleNextUpdate(completion: (() -> Void)?) {
+        guard let futureDate = self.nextScheduleDate() else { return }
+        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: futureDate, userInfo: nil) { error in
+            if let error = error {
+                print(error)
+            }
+            completion?()
+        }
+    }
+
+    private func nextScheduleDate() -> Date? {
+        let minuteGranuity = 15
+
+        let now = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: now)
+        let minute = calendar.component(.minute, from: now)
+
+        let floorMinute = minute - (minute % minuteGranuity)
+        guard let floorDate = calendar.date(bySettingHour: hour, minute: floorMinute, second: 0, of: now) else { return nil }
+
+        return calendar.date(byAdding: .minute, value: minuteGranuity, to: floorDate)
+    }
+}
