@@ -10,7 +10,11 @@ import ClockKit
 
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
-    
+
+    var provider: ComplicationProvider = {
+        return ComplicationProvider()
+    }()
+
     // MARK: - Timeline Configuration
     
     func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
@@ -28,7 +32,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .graphicCorner:
             let complication = CLKComplicationTemplateGraphicCornerTextImage()
             complication.imageProvider = CLKFullColorImageProvider(fullColorImage: UIImage(named:"radialGraph71")!)
-            complication.textProvider = CLKTextProvider(format: "%d steps", 1000)
+            complication.textProvider = CLKTextProvider(format: "%d steps", provider.currentStepCount)
 
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: complication)
             handler(timelineEntry)

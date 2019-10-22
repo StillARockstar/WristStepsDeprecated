@@ -9,9 +9,14 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    private var backgroundManager: BackgroundManager!
 
     func applicationDidFinishLaunching() {
-        BackgroundManager.shared.scheduleNextUpdate(completion: nil)
+        let complicationProvider = ComplicationProvider()
+        complicationProvider.connector = HealthConnector()
+
+        backgroundManager = BackgroundManager(complicationProvider: complicationProvider)
+        backgroundManager.scheduleNextUpdate(completion: nil)
     }
 
     func applicationDidBecomeActive() {
@@ -30,7 +35,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
                 // Be sure to complete the background task once you’re done.
-                BackgroundManager.shared.scheduleNextUpdate {
+                backgroundManager.peformBackgroundTasks {
                     backgroundTask.setTaskCompletedWithSnapshot(false)
                 }
             case let snapshotTask as WKSnapshotRefreshBackgroundTask:

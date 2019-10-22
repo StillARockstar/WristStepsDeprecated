@@ -10,9 +10,11 @@ import Foundation
 import WatchKit
 
 class BackgroundManager {
-    static var shared: BackgroundManager = {
-        return BackgroundManager()
-    }()
+    private var complicationProvider: ComplicationProvider
+
+    init(complicationProvider: ComplicationProvider) {
+        self.complicationProvider = complicationProvider
+    }
 
     func scheduleNextUpdate(completion: (() -> Void)?) {
         guard let futureDate = self.nextScheduleDate() else { return }
@@ -36,5 +38,30 @@ class BackgroundManager {
         guard let floorDate = calendar.date(bySettingHour: hour, minute: floorMinute, second: 0, of: now) else { return nil }
 
         return calendar.date(byAdding: .minute, value: minuteGranuity, to: floorDate)
+    }
+
+    func peformBackgroundTasks(completion: (() -> Void)) {
+        let operation1 = BlockOperation { [weak self] in
+            let sema = DispatchSemaphore(value: 0)
+            self?.complicationProvider.updateStepCount {
+                self?.complicationProvider.triggerComplicationUpdates()
+                sema.signal()
+            }
+            sema.wait()
+        }
+        let operation2 = BlockOperation { [weak self] in
+            let sema = DispatchSemaphore(value: 0)
+            self?.scheduleNextUpdate {
+                sema.signal()
+            }
+            sema.wait()
+        }
+
+        let loadingQueue = OperationQueue()
+        loadingQueue.addOperation(operation1)
+        loadingQueue.addOperation(operation2)
+        loadingQueue.waitUntilAllOperationsAreFinished()
+
+        completion()
     }
 }
