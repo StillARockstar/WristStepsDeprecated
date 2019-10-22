@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
+		4C321002235F8680008E46E9 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321001235F8680008E46E9 /* KeyValueStore.swift */; };
 		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
 		4CA694982357AF46005C9924 /* CurrentStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA694972357AF46005C9924 /* CurrentStepView.swift */; };
@@ -70,6 +72,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
+		4C321001235F8680008E46E9 /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
 		4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -120,8 +124,10 @@
 		4C5337A72357AB8600E3970E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4C5337A82357AB9C00E3970E /* HealthConnector.swift */,
 				4CA6949D235CED62005C9924 /* BackgroundManager.swift */,
+				4C5337A82357AB9C00E3970E /* HealthConnector.swift */,
+				4C320FFF235F860A008E46E9 /* ClockConnector.swift */,
+				4C321001235F8680008E46E9 /* KeyValueStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,7 +351,9 @@
 				4CA694982357AF46005C9924 /* CurrentStepView.swift in Sources */,
 				4CBF555D2357A5C60009AF09 /* ExtensionDelegate.swift in Sources */,
 				4CBF55612357A5C60009AF09 /* NotificationView.swift in Sources */,
+				4C321002235F8680008E46E9 /* KeyValueStore.swift in Sources */,
 				4CBF55632357A5C60009AF09 /* ComplicationController.swift in Sources */,
+				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,
 				4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

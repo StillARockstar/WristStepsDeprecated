@@ -12,10 +12,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     private var backgroundManager: BackgroundManager!
 
     func applicationDidFinishLaunching() {
-        let complicationProvider = ComplicationProvider()
-        complicationProvider.connector = HealthConnector()
+        let healthConnector = HealthConnector()
+        let clockConnector = ClockConnector()
 
-        backgroundManager = BackgroundManager(complicationProvider: complicationProvider)
+        backgroundManager = BackgroundManager(healthConnector: healthConnector, clockConnector: clockConnector)
         backgroundManager.scheduleNextUpdate(completion: nil)
     }
 

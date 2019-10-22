@@ -7,43 +7,25 @@
 //
 
 import Foundation
-import ClockKit
+import UIKit
 
 class ComplicationProvider {
-    var connector: HealthConnector!
-
-    private var server: CLKComplicationServer {
-        return CLKComplicationServer.sharedInstance()
+    private var stepCount: Int {
+        return KeyValueStore.shared.read(key: .stepCount) as? Int ?? 0
     }
 
-    var currentStepCount: Int {
-        return readStepCount()
+    func getText() -> String {
+        return String(format: "%d steps", stepCount)
     }
 
-    func triggerComplicationUpdates() {
-        for complication in server.activeComplications ?? [] {
-            server.reloadTimeline(for: complication)
+    func getImage() -> UIImage {
+        let calculatedPercent = Double(stepCount) / Double(10000)
+        var stepPercent = Int(calculatedPercent * 100)
+
+        if stepPercent > 100 {
+            stepPercent = 100
         }
-    }
 
-    func updateStepCount(completion: @escaping (() -> Void)) {
-        connector.fetchCurrentStepCount { [weak self] (steps) in
-            if let steps = steps {
-                self?.storeStepCount(newValue: steps)
-            }
-            completion()
-        }
-    }
-}
-
-private extension ComplicationProvider {
-    private var stepCountKey: String { return "currentStepCount" }
-
-    func storeStepCount(newValue: Int) {
-        UserDefaults.standard.set(newValue, forKey: stepCountKey)
-    }
-
-    func readStepCount() -> Int {
-        return UserDefaults.standard.integer(forKey: stepCountKey)
+        return UIImage(named:"radialGraph\(stepPercent)")!
     }
 }

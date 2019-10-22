@@ -31,8 +31,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .graphicCorner:
             let complication = CLKComplicationTemplateGraphicCornerTextImage()
-            complication.imageProvider = CLKFullColorImageProvider(fullColorImage: UIImage(named:"radialGraph71")!)
-            complication.textProvider = CLKTextProvider(format: "%d steps", provider.currentStepCount)
+            complication.imageProvider = CLKFullColorImageProvider(fullColorImage: provider.getImage())
+            complication.textProvider = CLKTextProvider(format: provider.getText())
 
             let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: complication)
             handler(timelineEntry)
@@ -47,7 +47,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .graphicCorner:
             let complication = CLKComplicationTemplateGraphicCornerTextImage()
-            complication.imageProvider = CLKFullColorImageProvider(fullColorImage: UIImage(named:"radialGraph71")!)
+            complication.imageProvider = CLKFullColorImageProvider(fullColorImage: UIImage(named:"radialGraph10")!)
             complication.textProvider = CLKTextProvider(format: "%d steps", 1000)
             handler(complication)
         default:

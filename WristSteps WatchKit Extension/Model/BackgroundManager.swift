@@ -10,10 +10,12 @@ import Foundation
 import WatchKit
 
 class BackgroundManager {
-    private var complicationProvider: ComplicationProvider
+    private var healthConnector: HealthConnector
+    private var clockConnector: ClockConnector
 
-    init(complicationProvider: ComplicationProvider) {
-        self.complicationProvider = complicationProvider
+    init(healthConnector: HealthConnector, clockConnector: ClockConnector) {
+        self.healthConnector = healthConnector
+        self.clockConnector = clockConnector
     }
 
     func scheduleNextUpdate(completion: (() -> Void)?) {
@@ -43,10 +45,11 @@ class BackgroundManager {
     func peformBackgroundTasks(completion: (() -> Void)) {
         let operation1 = BlockOperation { [weak self] in
             let sema = DispatchSemaphore(value: 0)
-            self?.complicationProvider.updateStepCount {
-                self?.complicationProvider.triggerComplicationUpdates()
-                sema.signal()
-            }
+            self?.healthConnector.fetchCurrentStepCount(completion: { [weak self] (steps) in
+                guard let steps = steps else { return }
+                self?.clockConnector.updateComplicationStepCount(newValue: steps)
+                self?.clockConnector.triggerComplicationUpdate()
+            })
             sema.wait()
         }
         let operation2 = BlockOperation { [weak self] in
