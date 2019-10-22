@@ -15,7 +15,7 @@ class ComplicationProvider {
     }
 
     func getText() -> String {
-        return String(format: "%d steps", stepCount)
+        return stepCount.formattedString + " steps"
     }
 
     func getImage() -> UIImage {
