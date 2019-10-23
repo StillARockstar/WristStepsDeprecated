@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CurrentStepView: View {
+struct HomeCurrentStepView: View {
     let stepPercent: Int
     let stepCount: Int
 
@@ -37,8 +37,8 @@ struct CurrentStepView: View {
     }
 }
 
-struct CurrentStepView_Previews: PreviewProvider {
+struct HomeCurrentStepView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentStepView(stepPercent: 10, stepCount: 1000)
+        HomeCurrentStepView(stepPercent: 10, stepCount: 1000)
     }
 }
