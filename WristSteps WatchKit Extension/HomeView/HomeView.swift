@@ -17,6 +17,21 @@ struct HomeView: View {
             HomeGoalView(stepGoal: provider.stepGoal)
             Spacer()
         }
+        .contextMenu {
+            contextMenuContent
+        }
+    }
+
+    private var contextMenuContent: some View {
+        Button(action: {
+            print("Touched")
+        }) {
+            VStack{
+                Image(systemName: "arrow.up.and.down")
+                    .font(.title)
+                Text("Change Goal")
+            }
+        }
     }
 }
 
