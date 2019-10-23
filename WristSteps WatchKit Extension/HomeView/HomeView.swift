@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var provider: HomeViewProvider
+    @State var showingSetGoal = false
 
     var body: some View {
         VStack {
@@ -20,10 +21,14 @@ struct HomeView: View {
         .contextMenu {
             contextMenuContent
         }
+        .sheet(isPresented: $showingSetGoal) {
+            SetGoalView()
+        }
     }
 
     private var contextMenuContent: some View {
         Button(action: {
+            self.showingSetGoal.toggle()
             print("Touched")
         }) {
             VStack{

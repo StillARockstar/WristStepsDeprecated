@@ -12,6 +12,7 @@
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
+		4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA315F92360E9E40032E58D /* SetGoalView.swift */; };
 		4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */; };
 		4CA6949E235CED62005C9924 /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949D235CED62005C9924 /* BackgroundManager.swift */; };
 		4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949F235CF841005C9924 /* ComplicationProvider.swift */; };
@@ -80,6 +81,7 @@
 		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
 		4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		4CA315F92360E9E40032E58D /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
 		4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCurrentStepView.swift; sourceTree = "<group>"; };
 		4CA6949D235CED62005C9924 /* BackgroundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
 		4CA6949F235CF841005C9924 /* ComplicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationProvider.swift; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4CA315F82360E8000032E58D /* SetGoalView */ = {
+			isa = PBXGroup;
+			children = (
+				4CA315F92360E9E40032E58D /* SetGoalView.swift */,
+			);
+			path = SetGoalView;
+			sourceTree = "<group>";
+		};
 		4CBF55392357A5C40009AF09 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 				4C321003235F9043008E46E9 /* Helpers */,
 				4C5337A72357AB8600E3970E /* Model */,
 				4C5337A52357AB1700E3970E /* HomeView */,
+				4CA315F82360E8000032E58D /* SetGoalView */,
 				4CBF55792357A7090009AF09 /* Complication */,
 				4CBF55782357A6F90009AF09 /* Notification */,
 				4CBF55642357A5C70009AF09 /* Assets.xcassets */,
@@ -362,6 +373,7 @@
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CA6949E235CED62005C9924 /* BackgroundManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
+				4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */,
 				4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */,
 				4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */,
 				4CBF555D2357A5C60009AF09 /* ExtensionDelegate.swift in Sources */,
