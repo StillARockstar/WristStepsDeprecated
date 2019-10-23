@@ -10,10 +10,10 @@ import Foundation
 
 class HomeViewProvider: ObservableObject {
     private let connector: HealthConnector
-    private let stepGoal = 10000
 
     @Published var steps = 0
     @Published var stepPercent = 0
+    @Published var stepGoal = 10000
 
     init(connector: HealthConnector) {
         self.connector = connector

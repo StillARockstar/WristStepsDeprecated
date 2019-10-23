@@ -14,6 +14,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             CurrentStepView(stepPercent: provider.stepPercent,stepCount: provider.steps)
+            GoalView(stepGoal: provider.stepGoal)
             Spacer()
         }
     }
