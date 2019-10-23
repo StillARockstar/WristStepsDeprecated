@@ -29,7 +29,6 @@ struct HomeView: View {
     private var contextMenuContent: some View {
         Button(action: {
             self.showingSetGoal.toggle()
-            print("Touched")
         }) {
             VStack{
                 Image(systemName: "arrow.up.and.down")
