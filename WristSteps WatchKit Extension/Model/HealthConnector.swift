@@ -66,11 +66,11 @@ class HealthConnector {
                 return
             }
             guard let firstStatistic = results.statistics().first else {
-                completion(nil)
+                completion(0)
                 return
             }
             guard let doubleSteps = firstStatistic.sumQuantity()?.doubleValue(for: HKUnit.count()) else {
-                completion(nil)
+                completion(0)
                 return
             }
             completion(Int(doubleSteps))

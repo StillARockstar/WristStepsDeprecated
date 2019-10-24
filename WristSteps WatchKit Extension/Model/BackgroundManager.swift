@@ -46,7 +46,8 @@ class BackgroundManager {
         let operation1 = BlockOperation { [weak self] in
             let sema = DispatchSemaphore(value: 0)
             self?.healthConnector.fetchCurrentStepCount(completion: { [weak self] (steps) in
-                self?.clockConnector.updateComplicationStepCount(newValue: steps ?? 0)
+                guard let steps = steps else { return }
+                self?.clockConnector.updateComplicationStepCount(newValue: steps)
                 self?.clockConnector.triggerComplicationUpdate()
             })
             sema.wait()
