@@ -29,7 +29,7 @@ class BackgroundManager {
     }
 
     private func nextScheduleDate() -> Date? {
-        let minuteGranuity = 15
+        let minuteGranuity = 5
 
         let now = Date()
         let calendar = Calendar.current
