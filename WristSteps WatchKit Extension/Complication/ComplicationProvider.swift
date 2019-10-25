@@ -16,7 +16,10 @@ class ComplicationProvider {
     }
 
     func getImage() -> UIImage {
-        let calculatedPercent = Double(DataCache.shared.stepCount) / Double(10000)
+        let stepCount = DataCache.shared.stepCount
+        let stepGoal = DataCache.shared.stepGoal
+
+        let calculatedPercent = Double(stepCount) / Double(stepGoal)
         var stepPercent = Int(calculatedPercent * 100)
 
         if stepPercent > 100 {

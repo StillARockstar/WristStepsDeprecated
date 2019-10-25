@@ -10,6 +10,7 @@ import Foundation
 
 fileprivate enum DataCacheEntryKey: String {
     case stepCount = "keyStepCount"
+    case stepGoal = "keyStepGoal"
 }
 
 let DataCacheValueUpdatedNotificationName = Notification.Name(rawValue: "DataCacheValueUpdatedNotification")
@@ -19,14 +20,27 @@ class DataCache {
         return DataCache()
     }()
 
+    private let defaultStepCount = 0
+    private let defaultStepGoal = 10000
+
     private init() { }
 
     var stepCount: Int {
         get {
-            return read(key: .stepCount) as? Int ?? 0
+            return read(key: .stepCount) as? Int ?? defaultStepCount
         }
         set {
             write(value: newValue, key: .stepCount)
+            NotificationCenter.default.post(name: DataCacheValueUpdatedNotificationName, object: nil)
+        }
+    }
+
+    var stepGoal: Int {
+        get {
+            return read(key: .stepGoal) as? Int ?? defaultStepGoal
+        }
+        set {
+            write(value: newValue, key: .stepGoal)
             NotificationCenter.default.post(name: DataCacheValueUpdatedNotificationName, object: nil)
         }
     }

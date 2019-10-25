@@ -11,21 +11,24 @@ import Foundation
 class HomeViewProvider: ObservableObject {
     @Published var steps = 0
     @Published var stepPercent = 0
-    @Published var stepGoal = 10000
+    @Published var stepGoal = 0
 
     init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentStepCount), name: DataCacheValueUpdatedNotificationName, object: nil)
-        updateCurrentStepCount()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateViewData), name: DataCacheValueUpdatedNotificationName, object: nil)
+        updateViewData()
     }
 
-    @objc func updateCurrentStepCount() {
+    @objc func updateViewData() {
         let newStepCount = DataCache.shared.stepCount
-        self.handle(stepCount: newStepCount)
+        let newStepGoal = DataCache.shared.stepGoal
+        self.handle(stepCount: newStepCount, stepGoal: newStepGoal)
     }
 
-    private func handle(stepCount: Int?) {
+    private func handle(stepCount: Int, stepGoal: Int) {
         DispatchQueue.main.async {
-            self.steps = stepCount ?? 0
+            self.steps = stepCount
+            self.stepGoal = stepGoal
+
             let calculatedPercent = Double(self.steps) / Double(self.stepGoal)
             self.stepPercent = Int(calculatedPercent * 100)
         }
