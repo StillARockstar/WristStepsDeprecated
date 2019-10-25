@@ -10,16 +10,13 @@ import Foundation
 import UIKit
 
 class ComplicationProvider {
-    private var stepCount: Int {
-        return KeyValueStore.shared.read(key: .stepCount) as? Int ?? 0
-    }
 
     func getText() -> String {
-        return stepCount.formattedString + " steps"
+        return DataCache.shared.stepCount.formattedString + " steps"
     }
 
     func getImage() -> UIImage {
-        let calculatedPercent = Double(stepCount) / Double(10000)
+        let calculatedPercent = Double(DataCache.shared.stepCount) / Double(10000)
         var stepPercent = Int(calculatedPercent * 100)
 
         if stepPercent > 100 {

@@ -14,10 +14,6 @@ class ClockConnector {
         return CLKComplicationServer.sharedInstance()
     }
 
-    func updateComplicationStepCount(newValue: Int) {
-        KeyValueStore.shared.store(value: newValue, key: .stepCount)
-    }
-
     func triggerComplicationUpdate() {
         for complication in server.activeComplications ?? [] {
             server.reloadTimeline(for: complication)

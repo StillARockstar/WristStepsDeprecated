@@ -10,13 +10,28 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     private var backgroundManager: BackgroundManager!
+    private var clockConnector: ClockConnector!
 
     func applicationDidFinishLaunching() {
-        let healthConnector = HealthConnector()
-        let clockConnector = ClockConnector()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateComplications), name: DataCacheValueUpdatedNotificationName, object: nil)
 
-        backgroundManager = BackgroundManager(healthConnector: healthConnector, clockConnector: clockConnector)
+        let healthConnector = HealthConnector()
+
+        healthConnector.requestAuthorization { _ in
+            healthConnector.fetchCurrentStepCount { (steps) in
+                guard let steps = steps else { return }
+                DataCache.shared.stepCount = steps
+            }
+        }
+
+        backgroundManager = BackgroundManager(healthConnector: healthConnector)
         backgroundManager.scheduleNextUpdate(completion: nil)
+
+        clockConnector = ClockConnector()
+    }
+
+    @objc func updateComplications() {
+        clockConnector.triggerComplicationUpdate()
     }
 
     func applicationDidBecomeActive() {

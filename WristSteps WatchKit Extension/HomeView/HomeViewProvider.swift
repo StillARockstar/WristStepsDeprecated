@@ -9,30 +9,18 @@
 import Foundation
 
 class HomeViewProvider: ObservableObject {
-    private let connector: HealthConnector
-
     @Published var steps = 0
     @Published var stepPercent = 0
     @Published var stepGoal = 10000
 
-    init(connector: HealthConnector) {
-        self.connector = connector
-        connector.requestAuthorization { [weak self] _ in
-            self?.updateCurrentStepCount()
-            self?.registerObserver()
-        }
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCurrentStepCount), name: DataCacheValueUpdatedNotificationName, object: nil)
+        updateCurrentStepCount()
     }
 
-    private func updateCurrentStepCount() {
-        connector.fetchCurrentStepCount { [weak self] (steps) in
-            self?.handle(stepCount: steps)
-        }
-    }
-
-    private func registerObserver() {
-        connector.registerObserver { [weak self] (steps) in
-            self?.handle(stepCount: steps)
-        }
+    @objc func updateCurrentStepCount() {
+        let newStepCount = DataCache.shared.stepCount
+        self.handle(stepCount: newStepCount)
     }
 
     private func handle(stepCount: Int?) {

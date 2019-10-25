@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
-		4C321002235F8680008E46E9 /* KeyValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321001235F8680008E46E9 /* KeyValueStore.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
@@ -30,6 +29,7 @@
 		4CBF55682357A5C70009AF09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55672357A5C70009AF09 /* Preview Assets.xcassets */; };
 		4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */; };
 		4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */; };
+		4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6EB23638567002CF290 /* DataCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +76,6 @@
 
 /* Begin PBXFileReference section */
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
-		4C321001235F8680008E46E9 /* KeyValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStore.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
 		4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
@@ -103,6 +102,7 @@
 		4CBF556A2357A5C70009AF09 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProvider.swift; sourceTree = "<group>"; };
 		4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalView.swift; sourceTree = "<group>"; };
+		4CFBB6EB23638567002CF290 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,10 +139,10 @@
 		4C5337A72357AB8600E3970E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4CA6949D235CED62005C9924 /* BackgroundManager.swift */,
 				4C5337A82357AB9C00E3970E /* HealthConnector.swift */,
+				4CFBB6EB23638567002CF290 /* DataCache.swift */,
+				4CA6949D235CED62005C9924 /* BackgroundManager.swift */,
 				4C320FFF235F860A008E46E9 /* ClockConnector.swift */,
-				4C321001235F8680008E46E9 /* KeyValueStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,6 +370,7 @@
 				4CBF555B2357A5C60009AF09 /* HostingController.swift in Sources */,
 				4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
+				4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */,
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CA6949E235CED62005C9924 /* BackgroundManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
@@ -378,7 +379,6 @@
 				4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */,
 				4CBF555D2357A5C60009AF09 /* ExtensionDelegate.swift in Sources */,
 				4CBF55612357A5C60009AF09 /* NotificationView.swift in Sources */,
-				4C321002235F8680008E46E9 /* KeyValueStore.swift in Sources */,
 				4CBF55632357A5C60009AF09 /* ComplicationController.swift in Sources */,
 				4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */,
 				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,

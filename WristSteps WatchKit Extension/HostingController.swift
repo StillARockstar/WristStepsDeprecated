@@ -12,7 +12,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HomeView().environmentObject(HomeViewProvider(connector: HealthConnector.default))
+        HomeView().environmentObject(HomeViewProvider())
     }
 }
 
