@@ -22,12 +22,6 @@ struct HomeView: View {
         .contextMenu {
             contextMenuContent
         }
-        .sheet(isPresented: $showingSetGoal) {
-            SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
-        }
-        .sheet(isPresented: $showingDebug) {
-            DebugView().environmentObject(DebugViewProvider())
-        }
     }
 
     private var contextMenuContent: some View {
@@ -41,6 +35,9 @@ struct HomeView: View {
                     Text("Change Goal")
                 }
             }
+            .sheet(isPresented: $showingSetGoal) {
+                SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
+            }
             #if DEBUG
             Button(action: {
                 self.showingDebug.toggle()
@@ -50,6 +47,9 @@ struct HomeView: View {
                         .font(.title)
                     Text("Debug")
                 }
+            }
+            .sheet(isPresented: $showingDebug) {
+                DebugView().environmentObject(DebugViewProvider())
             }
             #endif
         }
