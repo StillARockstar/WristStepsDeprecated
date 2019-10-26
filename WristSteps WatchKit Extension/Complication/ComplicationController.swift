@@ -54,7 +54,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             template.fillFraction = provider.getPercentFloat() / 100.0
             return template
         case .modularLarge:
-            return nil
+            let template = CLKComplicationTemplateModularLargeTallBody()
+            template.headerTextProvider = CLKTextProvider(format: provider.getPercentText())
+            template.bodyTextProvider = CLKTextProvider(format: provider.getStepText())
+            return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
             template.textProvider = CLKTextProvider(format: provider.getPercentText())
@@ -130,7 +133,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             template.fillFraction = provider.getSamplePercentFloat() / 100.0
             return template
         case .modularLarge:
-            return nil
+            let template = CLKComplicationTemplateModularLargeTallBody()
+            template.headerTextProvider = CLKTextProvider(format: provider.getSamplePercentText())
+            template.bodyTextProvider = CLKTextProvider(format: provider.getSampleStepText())
+            return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
             template.textProvider = CLKTextProvider(format: provider.getSamplePercentText())
