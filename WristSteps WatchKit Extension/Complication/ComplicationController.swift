@@ -39,6 +39,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         default:
             handler(nil)
         }
+
+        DataCache.shared.lastComplicationRefresh = Date()
     }
     
     // MARK: - Placeholder Templates

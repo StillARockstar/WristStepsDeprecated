@@ -26,7 +26,7 @@ struct HomeView: View {
             SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
         }
         .sheet(isPresented: $showingDebug) {
-            DebugView()
+            DebugView().environmentObject(DebugViewProvider())
         }
     }
 

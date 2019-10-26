@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C05A0A9236482E40010D011 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05A0A8236482E40010D011 /* DebugView.swift */; };
+		4C05A0AB236485B00010D011 /* DebugViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05A0AA236485B00010D011 /* DebugViewProvider.swift */; };
+		4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05A0AC2364873A0010D011 /* DateFormatting.swift */; };
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
@@ -80,6 +82,8 @@
 
 /* Begin PBXFileReference section */
 		4C05A0A8236482E40010D011 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
+		4C05A0AA236485B00010D011 /* DebugViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewProvider.swift; sourceTree = "<group>"; };
+		4C05A0AC2364873A0010D011 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				4C05A0A8236482E40010D011 /* DebugView.swift */,
+				4C05A0AA236485B00010D011 /* DebugViewProvider.swift */,
 			);
 			path = DebugView;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				4C321004235F9052008E46E9 /* NumberFormatting.swift */,
+				4C05A0AC2364873A0010D011 /* DateFormatting.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -397,8 +403,10 @@
 			files = (
 				4CBF555B2357A5C60009AF09 /* HostingController.swift in Sources */,
 				4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */,
+				4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
 				4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */,
+				4C05A0AB236485B00010D011 /* DebugViewProvider.swift in Sources */,
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CA6949E235CED62005C9924 /* BackgroundManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,

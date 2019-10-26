@@ -9,13 +9,38 @@
 import SwiftUI
 
 struct DebugView: View {
+    @EnvironmentObject var provider: DebugViewProvider
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            headlineValueView(headline: "Background refresh",
+                              value: provider.lastBackgroundRefreshString)
+            headlineValueView(headline: "Complication trigger",
+                              value: provider.lastComplicationTriggerString)
+            headlineValueView(headline: "Complication refresh",
+                              value: provider.lastComplicationRefreshString)
+            Spacer()
+        }
+    }
+
+    func headlineValueView(headline: String, value: String) -> some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text(headline)
+                Spacer()
+            }
+            HStack {
+                Text(value)
+                    .foregroundColor(.gray)
+                    .padding(.leading, 10)
+                Spacer()
+            }
+        }
     }
 }
 
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        DebugView()
+        DebugView().environmentObject(DebugViewProvider())
     }
 }

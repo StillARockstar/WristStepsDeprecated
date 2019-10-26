@@ -18,5 +18,6 @@ class ClockConnector {
         for complication in server.activeComplications ?? [] {
             server.reloadTimeline(for: complication)
         }
+        DataCache.shared.lastComlicationTrigger = Date()
     }
 }

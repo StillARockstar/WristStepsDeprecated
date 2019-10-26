@@ -11,6 +11,9 @@ import Foundation
 fileprivate enum DataCacheEntryKey: String {
     case stepCount = "keyStepCount"
     case stepGoal = "keyStepGoal"
+    case backgroundRefresh = "keyBackgroundRefresh"
+    case complicationTrigger = "keyComplicationTrigger"
+    case complicationRefresh = "keyComplicationRefresh"
 }
 
 let DataCacheValueUpdatedNotificationName = Notification.Name(rawValue: "DataCacheValueUpdatedNotification")
@@ -42,6 +45,39 @@ class DataCache {
         set {
             write(value: newValue, key: .stepGoal)
             NotificationCenter.default.post(name: DataCacheValueUpdatedNotificationName, object: nil)
+        }
+    }
+
+    var lastBackgroundRefresh: Date? {
+        get {
+            return read(key: .backgroundRefresh) as? Date
+        }
+        set {
+            #if DEBUG
+            write(value: newValue, key: .backgroundRefresh)
+            #endif
+        }
+    }
+
+    var lastComlicationTrigger: Date? {
+        get {
+            return read(key: .complicationTrigger) as? Date
+        }
+        set {
+            #if DEBUG
+            write(value: newValue, key: .complicationTrigger)
+            #endif
+        }
+    }
+
+    var lastComplicationRefresh: Date? {
+        get {
+            return read(key: .complicationRefresh) as? Date
+        }
+        set {
+            #if DEBUG
+            write(value: newValue, key: .complicationRefresh)
+            #endif
         }
     }
 }

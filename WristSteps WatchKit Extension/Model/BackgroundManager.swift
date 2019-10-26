@@ -62,6 +62,7 @@ class BackgroundManager {
         loadingQueue.addOperation(operation2)
         loadingQueue.waitUntilAllOperationsAreFinished()
 
+        DataCache.shared.lastBackgroundRefresh = Date()
         completion()
     }
 }
