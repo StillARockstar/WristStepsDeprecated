@@ -9,13 +9,19 @@
 import SwiftUI
 
 struct SetGoalView: View {
+    @EnvironmentObject var provider: SetGoalProvider
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 5.0) {
+            Text("\(provider.stepGoal.kFormattedString)")
+                .foregroundColor(.white)
+                .font(.title)
+        }
     }
 }
 
 struct SetGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        SetGoalView()
+        SetGoalView().environmentObject(SetGoalProvider())
     }
 }
