@@ -9,29 +9,31 @@
 import SwiftUI
 
 struct SetGoalEditorView: View {
-    var currentGoal: Int
+    @EnvironmentObject var provider: SetGoalProvider
     private let buttonHeight: CGFloat = 35.0
 
     var body: some View {
         HStack {
             stepButton(systemName: "minus") {
-                print("--")
+                self.provider.stepGoal -= 100
             }
             .padding(.leading, 7.0)
 
             Spacer()
 
-            Text("\(currentGoal.kFormattedString)")
+            Text("\(Int(provider.stepGoal).kFormattedString)")
                 .foregroundColor(.white)
                 .font(.title)
 
             Spacer()
 
             stepButton(systemName: "plus") {
-                print("++")
+                self.provider.stepGoal += 100
             }
             .padding(.trailing, 7.0)
         }
+        .focusable(true)
+        .digitalCrownRotation($provider.stepGoal, from: 1000, through: 90000, by: 100, sensitivity: .high)
     }
 
     func stepButton(systemName: String, action: @escaping (() -> Void)) -> some View {
@@ -50,6 +52,6 @@ struct SetGoalEditorView: View {
 
 struct SetGoalEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        SetGoalEditorView(currentGoal: 10000)
+        SetGoalEditorView().environmentObject(SetGoalProvider(initialGoal: 10000))
     }
 }

@@ -22,7 +22,7 @@ struct HomeView: View {
             contextMenuContent
         }
         .sheet(isPresented: $showingSetGoal) {
-            SetGoalView().environmentObject(SetGoalProvider())
+            SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
         }
     }
 

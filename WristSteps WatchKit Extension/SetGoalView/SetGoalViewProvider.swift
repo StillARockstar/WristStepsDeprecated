@@ -9,20 +9,13 @@
 import Foundation
 
 class SetGoalProvider: ObservableObject {
-    @Published var stepGoal = 0
+    @Published var stepGoal: Double = 0
 
-    init() {
-        updateViewData()
+    init(initialGoal: Int) {
+        stepGoal = Double(initialGoal)
     }
 
-    @objc func updateViewData() {
-        let newStepGoal = DataCache.shared.stepGoal
-        self.handle(stepGoal: newStepGoal)
-    }
-
-    private func handle(stepGoal: Int) {
-        DispatchQueue.main.async {
-            self.stepGoal = stepGoal
-        }
+    func commitStepGoal() {
+        DataCache.shared.stepGoal = Int(stepGoal)
     }
 }

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SetGoalView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var provider: SetGoalProvider
     
     var body: some View {
@@ -16,7 +17,7 @@ struct SetGoalView: View {
             Text("Stepgoal".uppercased())
                 .foregroundColor(.appBlue)
                 .font(.body)
-            SetGoalEditorView(currentGoal: provider.stepGoal)
+            SetGoalEditorView().environmentObject(provider)
             Text("The recommended amount of steps is \(10000) per day")
                 .font(.footnote)
                 .foregroundColor(.gray)
@@ -27,7 +28,8 @@ struct SetGoalView: View {
             Spacer()
 
             Button(action: {
-
+                self.provider.commitStepGoal()
+                self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Update Goal")
             }
@@ -38,6 +40,6 @@ struct SetGoalView: View {
 
 struct SetGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        SetGoalView().environmentObject(SetGoalProvider())
+        SetGoalView().environmentObject(SetGoalProvider(initialGoal: 10000))
     }
 }
