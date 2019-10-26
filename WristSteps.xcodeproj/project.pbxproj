@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C05A0A9236482E40010D011 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05A0A8236482E40010D011 /* DebugView.swift */; };
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4C05A0A8236482E40010D011 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C05A0A7236482240010D011 /* DebugView */ = {
+			isa = PBXGroup;
+			children = (
+				4C05A0A8236482E40010D011 /* DebugView.swift */,
+			);
+			path = DebugView;
+			sourceTree = "<group>";
+		};
 		4C321003235F9043008E46E9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +222,7 @@
 				4CFBB6F323644460002CF290 /* Style */,
 				4C5337A52357AB1700E3970E /* HomeView */,
 				4CA315F82360E8000032E58D /* SetGoalView */,
+				4C05A0A7236482240010D011 /* DebugView */,
 				4CBF55792357A7090009AF09 /* Complication */,
 				4CBF55782357A6F90009AF09 /* Notification */,
 				4CBF55642357A5C70009AF09 /* Assets.xcassets */,
@@ -400,6 +411,7 @@
 				4CBF55632357A5C60009AF09 /* ComplicationController.swift in Sources */,
 				4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */,
 				4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */,
+				4C05A0A9236482E40010D011 /* DebugView.swift in Sources */,
 				4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */,
 				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,
 				4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */,

@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var provider: HomeViewProvider
     @State var showingSetGoal = false
+    @State var showingDebug = false
 
     var body: some View {
         VStack {
@@ -24,17 +25,33 @@ struct HomeView: View {
         .sheet(isPresented: $showingSetGoal) {
             SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
         }
+        .sheet(isPresented: $showingDebug) {
+            DebugView()
+        }
     }
 
     private var contextMenuContent: some View {
-        Button(action: {
-            self.showingSetGoal.toggle()
-        }) {
-            VStack{
-                Image(systemName: "arrow.up.and.down")
-                    .font(.title)
-                Text("Change Goal")
+        Group {
+            Button(action: {
+                self.showingSetGoal.toggle()
+            }) {
+                VStack{
+                    Image(systemName: "arrow.up.and.down")
+                        .font(.title)
+                    Text("Change Goal")
+                }
             }
+            #if DEBUG
+            Button(action: {
+                self.showingDebug.toggle()
+            }) {
+                VStack{
+                    Image(systemName: "info")
+                        .font(.title)
+                    Text("Debug")
+                }
+            }
+            #endif
         }
     }
 }
