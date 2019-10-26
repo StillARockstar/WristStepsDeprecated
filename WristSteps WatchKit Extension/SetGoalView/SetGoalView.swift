@@ -12,7 +12,27 @@ struct SetGoalView: View {
     @EnvironmentObject var provider: SetGoalProvider
     
     var body: some View {
-        SetGoalEditorView(currentGoal: provider.stepGoal)
+        VStack {
+            Text("Stepgoal".uppercased())
+                .foregroundColor(.appBlue)
+                .font(.body)
+            SetGoalEditorView(currentGoal: provider.stepGoal)
+            Text("The recommended amount of steps is \(10000) per day")
+                .font(.footnote)
+                .foregroundColor(.gray)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(nil)
+
+            Spacer()
+
+            Button(action: {
+
+            }) {
+                Text("Update Goal")
+            }
+            .cornerRadius(40.0)
+        }
     }
 }
 
