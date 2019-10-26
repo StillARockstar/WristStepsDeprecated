@@ -41,6 +41,8 @@ class BackgroundManager {
     }
 
     func peformBackgroundTasks(completion: (() -> Void)) {
+        DataCache.shared.lastBackgroundRefresh = Date()
+        
         let operation1 = BlockOperation { [weak self] in
             let sema = DispatchSemaphore(value: 0)
             self?.healthConnector.fetchCurrentStepCount(completion: { (steps) in
@@ -62,7 +64,6 @@ class BackgroundManager {
         loadingQueue.addOperation(operation2)
         loadingQueue.waitUntilAllOperationsAreFinished()
 
-        DataCache.shared.lastBackgroundRefresh = Date()
         completion()
     }
 }
