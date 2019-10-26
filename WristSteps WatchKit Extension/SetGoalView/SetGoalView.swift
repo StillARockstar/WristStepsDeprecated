@@ -12,11 +12,7 @@ struct SetGoalView: View {
     @EnvironmentObject var provider: SetGoalProvider
     
     var body: some View {
-        VStack(spacing: 5.0) {
-            Text("\(provider.stepGoal.kFormattedString)")
-                .foregroundColor(.white)
-                .font(.title)
-        }
+        SetGoalEditorView(currentGoal: provider.stepGoal)
     }
 }
 

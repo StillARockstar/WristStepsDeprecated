@@ -19,13 +19,13 @@ struct HomeCurrentStepView: View {
                     .foregroundColor(.gray)
                     .font(.body)
                 Text("\(stepPercent)%")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appBlue)
                     .fontWeight(.medium)
                 Spacer()
             }
             HStack(alignment: .bottom, spacing: 5) {
                 Text("\(stepCount)")
-                    .foregroundColor(.blue)
+                    .foregroundColor(.appBlue)
                     .font(.title)
                 Text("steps")
                     .foregroundColor(.white)

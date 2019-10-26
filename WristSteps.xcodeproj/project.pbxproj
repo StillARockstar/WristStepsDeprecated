@@ -31,6 +31,8 @@
 		4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */; };
 		4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6EB23638567002CF290 /* DataCache.swift */; };
 		4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */; };
+		4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */; };
+		4CFBB6F52364446E002CF290 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6F42364446E002CF290 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalView.swift; sourceTree = "<group>"; };
 		4CFBB6EB23638567002CF290 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalViewProvider.swift; sourceTree = "<group>"; };
+		4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalEditorView.swift; sourceTree = "<group>"; };
+		4CFBB6F42364446E002CF290 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				4CA315F92360E9E40032E58D /* SetGoalView.swift */,
+				4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */,
 				4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */,
 			);
 			path = SetGoalView;
@@ -204,6 +209,7 @@
 				4CBF555A2357A5C60009AF09 /* HostingController.swift */,
 				4C321003235F9043008E46E9 /* Helpers */,
 				4C5337A72357AB8600E3970E /* Model */,
+				4CFBB6F323644460002CF290 /* Style */,
 				4C5337A52357AB1700E3970E /* HomeView */,
 				4CA315F82360E8000032E58D /* SetGoalView */,
 				4CBF55792357A7090009AF09 /* Complication */,
@@ -240,6 +246,14 @@
 				4CA6949F235CF841005C9924 /* ComplicationProvider.swift */,
 			);
 			path = Complication;
+			sourceTree = "<group>";
+		};
+		4CFBB6F323644460002CF290 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				4CFBB6F42364446E002CF290 /* Colors.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,9 +396,11 @@
 				4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */,
 				4CBF555D2357A5C60009AF09 /* ExtensionDelegate.swift in Sources */,
 				4CBF55612357A5C60009AF09 /* NotificationView.swift in Sources */,
+				4CFBB6F52364446E002CF290 /* Colors.swift in Sources */,
 				4CBF55632357A5C60009AF09 /* ComplicationController.swift in Sources */,
 				4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */,
 				4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */,
+				4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */,
 				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,
 				4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */,
 			);
