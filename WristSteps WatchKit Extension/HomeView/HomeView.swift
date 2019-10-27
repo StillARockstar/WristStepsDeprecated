@@ -17,7 +17,17 @@ struct HomeView: View {
         VStack {
             HomeCurrentStepView(stepPercent: provider.stepPercent,stepCount: provider.steps)
             HomeGoalView(stepGoal: provider.stepGoal)
+
             Spacer()
+
+            Button(action: {
+                self.showingSetGoal.toggle()
+            }) {
+                Text("Change Goal")
+            }
+            .sheet(isPresented: $showingSetGoal) {
+                SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
+            }
         }
         .contextMenu {
             contextMenuContent
@@ -26,18 +36,6 @@ struct HomeView: View {
 
     private var contextMenuContent: some View {
         Group {
-            Button(action: {
-                self.showingSetGoal.toggle()
-            }) {
-                VStack{
-                    Image(systemName: "arrow.up.and.down")
-                        .font(.title)
-                    Text("Change Goal")
-                }
-            }
-            .sheet(isPresented: $showingSetGoal) {
-                SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
-            }
             #if DEBUG
             Button(action: {
                 self.showingDebug.toggle()
