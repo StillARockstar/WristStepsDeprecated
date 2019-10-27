@@ -13,25 +13,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     private var clockConnector: ClockConnector!
 
     func applicationDidFinishLaunching() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateComplications), name: DataCacheValueUpdatedNotificationName, object: nil)
-
         let healthConnector = HealthConnector()
+
+        clockConnector = ClockConnector()
+
+        backgroundManager = BackgroundManager(healthConnector: healthConnector, clockConnector: clockConnector)
+        backgroundManager.scheduleNextUpdate(completion: nil)
 
         healthConnector.requestAuthorization { _ in
             healthConnector.fetchCurrentStepCount { (steps) in
                 guard let steps = steps else { return }
                 DataCache.shared.stepCount = steps
+                self.clockConnector.triggerComplicationUpdate()
             }
         }
-
-        backgroundManager = BackgroundManager(healthConnector: healthConnector)
-        backgroundManager.scheduleNextUpdate(completion: nil)
-
-        clockConnector = ClockConnector()
-    }
-
-    @objc func updateComplications() {
-        clockConnector.triggerComplicationUpdate()
     }
 
     func applicationDidBecomeActive() {
