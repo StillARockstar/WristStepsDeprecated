@@ -42,15 +42,24 @@ class BackgroundManager {
         return calendar.date(byAdding: .minute, value: minuteGranuity, to: floorDate)
     }
 
-    func peformBackgroundTasks(completion: (() -> Void)) {
-        DataCache.shared.lastBackgroundRefresh = Date()
-        
-        let operation1 = BlockOperation { [weak self] in
-            let sema = DispatchSemaphore(value: 0)
-            self?.healthConnector.fetchCurrentStepCount(completion: { (steps) in
+    func performDataUpdate(completion: (() -> Void)?) {
+        if Calendar.current.isDateInToday(DataCache.shared.lastBackgroundRefresh ?? Date()) {
+            self.healthConnector.fetchCurrentStepCount(completion: { (steps) in
                 guard let steps = steps else { return }
                 DataCache.shared.stepCount = steps
-                self?.clockConnector.triggerComplicationUpdate()
+            })
+        } else {
+            DataCache.shared.stepCount = 0
+        }
+
+        self.clockConnector.triggerComplicationUpdate()
+    }
+
+    func peformBackgroundTasks(completion: (() -> Void)) {
+        let operation1 = BlockOperation { [weak self] in
+            let sema = DispatchSemaphore(value: 0)
+            self?.performDataUpdate(completion: {
+                sema.signal()
             })
             sema.wait()
         }
@@ -67,6 +76,7 @@ class BackgroundManager {
         loadingQueue.addOperation(operation2)
         loadingQueue.waitUntilAllOperationsAreFinished()
 
+        DataCache.shared.lastBackgroundRefresh = Date()
         completion()
     }
 }

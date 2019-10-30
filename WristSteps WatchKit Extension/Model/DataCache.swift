@@ -53,9 +53,7 @@ class DataCache {
             return read(key: .backgroundRefresh) as? Date
         }
         set {
-            #if DEBUG
             write(value: newValue, key: .backgroundRefresh)
-            #endif
         }
     }
 
