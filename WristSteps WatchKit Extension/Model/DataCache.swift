@@ -62,9 +62,7 @@ class DataCache {
             return read(key: .complicationTrigger) as? Date
         }
         set {
-            #if DEBUG
             write(value: newValue, key: .complicationTrigger)
-            #endif
         }
     }
 
@@ -73,9 +71,7 @@ class DataCache {
             return read(key: .complicationRefresh) as? Date
         }
         set {
-            #if DEBUG
             write(value: newValue, key: .complicationRefresh)
-            #endif
         }
     }
 }
