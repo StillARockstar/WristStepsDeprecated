@@ -44,15 +44,20 @@ class BackgroundManager {
 
     func performDataUpdate(completion: (() -> Void)?) {
         if Calendar.current.isDateInToday(DataCache.shared.lastBackgroundRefresh ?? Date()) {
-            self.healthConnector.fetchCurrentStepCount(completion: { (steps) in
-                guard let steps = steps else { return }
+            self.healthConnector.fetchCurrentStepCount(completion: { [weak self] (steps) in
+                guard let steps = steps else {
+                    completion?()
+                    return
+                }
                 DataCache.shared.stepCount = steps
+                self?.clockConnector.triggerComplicationUpdate()
+                completion?()
             })
         } else {
             DataCache.shared.stepCount = 0
+            self.clockConnector.triggerComplicationUpdate()
+            completion?()
         }
-
-        self.clockConnector.triggerComplicationUpdate()
     }
 
     func peformBackgroundTasks(completion: (() -> Void)) {
