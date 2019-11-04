@@ -21,9 +21,7 @@ class BackgroundManager {
     func scheduleNextUpdate(completion: (() -> Void)?) {
         guard let futureDate = self.nextScheduleDate() else { return }
         WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: futureDate, userInfo: nil) { error in
-            if let error = error {
-                print(error)
-            }
+            DataCache.shared.scheduleRefreshError = error?.localizedDescription
             completion?()
         }
     }
@@ -46,15 +44,18 @@ class BackgroundManager {
         if Calendar.current.isDateInToday(DataCache.shared.lastBackgroundRefresh ?? Date()) {
             self.healthConnector.fetchCurrentStepCount(completion: { [weak self] (steps) in
                 guard let steps = steps else {
+                    DataCache.shared.dataUpdateResult = .noUpdate
                     completion?()
                     return
                 }
                 DataCache.shared.stepCount = steps
+                DataCache.shared.dataUpdateResult = .healthKit
                 self?.clockConnector.triggerComplicationUpdate()
                 completion?()
             })
         } else {
             DataCache.shared.stepCount = 0
+            DataCache.shared.dataUpdateResult = .forcedZero
             self.clockConnector.triggerComplicationUpdate()
             completion?()
         }

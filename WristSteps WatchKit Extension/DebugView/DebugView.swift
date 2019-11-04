@@ -12,14 +12,19 @@ struct DebugView: View {
     @EnvironmentObject var provider: DebugViewProvider
 
     var body: some View {
-        VStack {
-            headlineValueView(headline: "Background refresh",
-                              value: provider.lastBackgroundRefreshString)
-            headlineValueView(headline: "Complication trigger",
-                              value: provider.lastComplicationTriggerString)
-            headlineValueView(headline: "Complication refresh",
-                              value: provider.lastComplicationRefreshString)
-            Spacer()
+        ScrollView {
+            VStack {
+                headlineValueView(headline: "Background refresh",
+                                  value: provider.lastBackgroundRefreshString)
+                headlineValueView(headline: "Complication trigger",
+                                  value: provider.lastComplicationTriggerString)
+                headlineValueView(headline: "Complication refresh",
+                                  value: provider.lastComplicationRefreshString)
+                headlineValueView(headline: "Schedule error",
+                                  value: provider.scheduleRefreshErrorString)
+                headlineValueView(headline: "Step update result",
+                                  value: provider.stepCountUpdateResultString)
+            }
         }
     }
 
@@ -31,6 +36,7 @@ struct DebugView: View {
             }
             HStack {
                 Text(value)
+                    .lineLimit(nil)
                     .foregroundColor(.gray)
                     .padding(.leading, 10)
                 Spacer()

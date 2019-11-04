@@ -14,6 +14,14 @@ fileprivate enum DataCacheEntryKey: String {
     case backgroundRefresh = "keyBackgroundRefresh"
     case complicationTrigger = "keyComplicationTrigger"
     case complicationRefresh = "keyComplicationRefresh"
+    case scheduleRefreshError = "keyScheduleRefreshError"
+    case stepCountUpdateResult = "keyStepCountUpdateResult"
+}
+
+enum StepCountUpdateResult: String {
+    case healthKit = "HealthKit"
+    case noUpdate = "No Update"
+    case forcedZero = "Forced Zero"
 }
 
 let DataCacheValueUpdatedNotificationName = Notification.Name(rawValue: "DataCacheValueUpdatedNotification")
@@ -72,6 +80,24 @@ class DataCache {
         }
         set {
             write(value: newValue, key: .complicationRefresh)
+        }
+    }
+
+    var scheduleRefreshError: String? {
+        get {
+            return read(key: .scheduleRefreshError) as? String
+        }
+        set {
+            write(value: newValue, key: .scheduleRefreshError)
+        }
+    }
+
+    var dataUpdateResult: StepCountUpdateResult? {
+        get {
+            return StepCountUpdateResult(rawValue: read(key: .stepCountUpdateResult) as? String ?? "")
+        }
+        set {
+            write(value: newValue?.rawValue, key: .stepCountUpdateResult)
         }
     }
 }
