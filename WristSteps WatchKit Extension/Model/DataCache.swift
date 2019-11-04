@@ -14,12 +14,13 @@ fileprivate enum DataCacheEntryKey: String {
     case backgroundRefresh = "keyBackgroundRefresh"
     case complicationTrigger = "keyComplicationTrigger"
     case complicationRefresh = "keyComplicationRefresh"
-    case scheduleRefreshError = "keyScheduleRefreshError"
     case stepCountUpdateResult = "keyStepCountUpdateResult"
+    case scheduleRefreshError = "keyScheduleRefreshError"
+    case pedometerStepCountError = "keyPedometerStepCountError"
 }
 
 enum StepCountUpdateResult: String {
-    case healthKit = "HealthKit"
+    case pedometer = "Pedometer"
     case noUpdate = "No Update"
     case forcedZero = "Forced Zero"
 }
@@ -83,6 +84,15 @@ class DataCache {
         }
     }
 
+    var dataUpdateResult: StepCountUpdateResult? {
+        get {
+            return StepCountUpdateResult(rawValue: read(key: .stepCountUpdateResult) as? String ?? "")
+        }
+        set {
+            write(value: newValue?.rawValue, key: .stepCountUpdateResult)
+        }
+    }
+
     var scheduleRefreshError: String? {
         get {
             return read(key: .scheduleRefreshError) as? String
@@ -92,12 +102,12 @@ class DataCache {
         }
     }
 
-    var dataUpdateResult: StepCountUpdateResult? {
+    var pedometerGetStepCountError: String? {
         get {
-            return StepCountUpdateResult(rawValue: read(key: .stepCountUpdateResult) as? String ?? "")
+            return read(key: .pedometerStepCountError) as? String
         }
         set {
-            write(value: newValue?.rawValue, key: .stepCountUpdateResult)
+            write(value: newValue, key: .pedometerStepCountError)
         }
     }
 }

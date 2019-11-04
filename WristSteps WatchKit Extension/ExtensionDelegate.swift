@@ -13,19 +13,17 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     private var clockConnector: ClockConnector!
 
     func applicationDidFinishLaunching() {
-        let healthConnector = HealthConnector()
+        let dataProvider = DataProvider()
 
         clockConnector = ClockConnector()
 
-        backgroundManager = BackgroundManager(healthConnector: healthConnector, clockConnector: clockConnector)
+        backgroundManager = BackgroundManager(dataProvider: dataProvider, clockConnector: clockConnector)
         backgroundManager.scheduleNextUpdate(completion: nil)
 
-        healthConnector.requestAuthorization { _ in
-            healthConnector.fetchCurrentStepCount { (steps) in
-                guard let steps = steps else { return }
-                DataCache.shared.stepCount = steps
-                self.clockConnector.triggerComplicationUpdate()
-            }
+        dataProvider.fetchCurrentStepCount { (steps) in
+            guard let steps = steps else { return }
+            DataCache.shared.stepCount = steps
+            self.clockConnector.triggerComplicationUpdate()
         }
     }
 

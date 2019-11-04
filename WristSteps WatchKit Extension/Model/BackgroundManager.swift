@@ -10,11 +10,11 @@ import Foundation
 import WatchKit
 
 class BackgroundManager {
-    private var healthConnector: HealthConnector
+    private var dataProvider: DataProvider
     private var clockConnector: ClockConnector
 
-    init(healthConnector: HealthConnector, clockConnector: ClockConnector) {
-        self.healthConnector = healthConnector
+    init(dataProvider: DataProvider, clockConnector: ClockConnector) {
+        self.dataProvider = dataProvider
         self.clockConnector = clockConnector
     }
 
@@ -41,32 +41,25 @@ class BackgroundManager {
     }
 
     func performDataUpdate(completion: (() -> Void)?) {
-        if Calendar.current.isDateInToday(DataCache.shared.lastBackgroundRefresh ?? Date()) {
-            self.healthConnector.fetchCurrentStepCount(completion: { [weak self] (steps) in
-                guard let steps = steps else {
-                    DataCache.shared.dataUpdateResult = .noUpdate
-                    completion?()
-                    return
-                }
-                DataCache.shared.stepCount = steps
-                DataCache.shared.dataUpdateResult = .healthKit
-                self?.clockConnector.triggerComplicationUpdate()
+        self.dataProvider.fetchCurrentStepCount(completion: { [weak self] (steps) in
+            guard let steps = steps else {
+                DataCache.shared.dataUpdateResult = .noUpdate
                 completion?()
-            })
-        } else {
-            DataCache.shared.stepCount = 0
-            DataCache.shared.dataUpdateResult = .forcedZero
-            self.clockConnector.triggerComplicationUpdate()
+                return
+            }
+            DataCache.shared.stepCount = steps
+            DataCache.shared.dataUpdateResult = .pedometer
+            self?.clockConnector.triggerComplicationUpdate()
             completion?()
-        }
+        })
     }
 
     func peformBackgroundTasks(completion: (() -> Void)) {
         let operation1 = BlockOperation { [weak self] in
             let sema = DispatchSemaphore(value: 0)
-            self?.performDataUpdate(completion: {
+            self?.performDataUpdate {
                 sema.signal()
-            })
+            }
             sema.wait()
         }
         let operation2 = BlockOperation { [weak self] in

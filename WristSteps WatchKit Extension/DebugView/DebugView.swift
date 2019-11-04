@@ -20,10 +20,12 @@ struct DebugView: View {
                                   value: provider.lastComplicationTriggerString)
                 headlineValueView(headline: "Complication refresh",
                                   value: provider.lastComplicationRefreshString)
-                headlineValueView(headline: "Schedule error",
-                                  value: provider.scheduleRefreshErrorString)
                 headlineValueView(headline: "Step update result",
                                   value: provider.stepCountUpdateResultString)
+                headlineValueView(headline: "Schedule error",
+                                  value: provider.scheduleRefreshErrorString)
+                headlineValueView(headline: "Get stepcount error",
+                                  value: provider.pedometerGetStepCountErrorString)
             }
         }
     }
