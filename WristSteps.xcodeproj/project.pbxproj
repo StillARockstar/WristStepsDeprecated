@@ -12,7 +12,7 @@
 		4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05A0AC2364873A0010D011 /* DateFormatting.swift */; };
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
-		4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* HealthConnector.swift */; };
+		4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* DataProvider.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
 		4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA315F92360E9E40032E58D /* SetGoalView.swift */; };
 		4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */; };
@@ -87,8 +87,8 @@
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C4F2D99236C5ADF00EF2F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C5337A82357AB9C00E3970E /* HealthConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthConnector.swift; sourceTree = "<group>"; };
 		4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		4C5337A82357AB9C00E3970E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		4C5BD1032370BF6D005D65DB /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		4CA315F92360E9E40032E58D /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 		4C5337A72357AB8600E3970E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4C5337A82357AB9C00E3970E /* HealthConnector.swift */,
+				4C5337A82357AB9C00E3970E /* DataProvider.swift */,
 				4CFBB6EB23638567002CF290 /* DataCache.swift */,
 				4CA6949D235CED62005C9924 /* BackgroundManager.swift */,
 				4C320FFF235F860A008E46E9 /* ClockConnector.swift */,
@@ -231,7 +231,7 @@
 		4CBF55572357A5C60009AF09 /* WristSteps WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				4C5337AA2357ABBB00E3970E /* WristSteps WatchKit Extension.entitlements */,
+				4C5BD1032370BF6D005D65DB /* WristSteps WatchKit Extension.entitlements */,
 				4CBF555C2357A5C60009AF09 /* ExtensionDelegate.swift */,
 				4CBF555A2357A5C60009AF09 /* HostingController.swift */,
 				4C321003235F9043008E46E9 /* Helpers */,
@@ -413,7 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CBF555B2357A5C60009AF09 /* HostingController.swift in Sources */,
-				4C5337A92357AB9C00E3970E /* HealthConnector.swift in Sources */,
+				4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */,
 				4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
 				4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */,
