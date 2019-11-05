@@ -36,6 +36,7 @@ struct HomeView: View {
 
     private var contextMenuContent: some View {
         Group {
+            #if DEBUG
             Button(action: {
                 self.showingDebug.toggle()
             }) {
@@ -48,6 +49,7 @@ struct HomeView: View {
             .sheet(isPresented: $showingDebug) {
                 DebugView().environmentObject(DebugViewProvider())
             }
+            #endif
         }
     }
 }
