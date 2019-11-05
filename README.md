@@ -1,0 +1,10 @@
+# WristSteps
+Your steps always at a glance
+
+Frequent walking is one of the most crucial things for a healthy lifestyle. And the amount of steps you go per day is the best indicator for it.
+
+With WristSteps you always have your current step count at a glance on your Apple Watch. The well designed Watch App presents you your current steps when you open it and allows you to set a daily step goal. With the extensive support for complications you can always take a look at your current progress on your watch face. A wide range of complications is supported to perfectly fit your style.
+
+WristSteps uses HealthKit to count your steps. Your privacy is very important to us. No metrics or user behavior is tracked and shared with the Developers or third parties.
+
+Please keep in mind that health is very important and fragile. If you have the feeling something is wrong, please see a doctor and don’t rely on apps. WristSteps is not a medical-grade service and is not responsible for your well-being.
