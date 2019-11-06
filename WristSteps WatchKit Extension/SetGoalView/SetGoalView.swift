@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DataCache
 
 struct SetGoalView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -40,6 +41,6 @@ struct SetGoalView: View {
 
 struct SetGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        SetGoalView().environmentObject(SetGoalProvider(initialGoal: 10000))
+        SetGoalView().environmentObject(SetGoalProvider(dataCache: DataCache(), initialGoal: 10000))
     }
 }

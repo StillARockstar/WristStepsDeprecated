@@ -15,17 +15,16 @@ class DataProvider {
     init() {
     }
 
-    func fetchCurrentStepCount(completion: @escaping ((Int?) -> Void)) {
+    func fetchCurrentStepCount(completion: @escaping ((Int?, String?) -> Void)) {
         let endDate = Date()
         let startDate = Calendar.current.startOfDay(for: endDate)
 
         pedometer.queryPedometerData(from: startDate, to: endDate) { (pedometerData, error) in
             guard let pedometerData = pedometerData else {
-                DataCache.shared.pedometerGetStepCountError = error.debugDescription
-                completion(nil)
+                completion(nil, error.debugDescription)
                 return
             }
-            completion(pedometerData.numberOfSteps.intValue)
+            completion(pedometerData.numberOfSteps.intValue, nil)
         }
     }
 }

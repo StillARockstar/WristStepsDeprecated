@@ -1,5 +1,5 @@
 //
-//  BackgroundManager.swift
+//  UpdateManager.swift
 //  WristSteps WatchKit Extension
 //
 //  Created by Michael Schoder on 20.10.19.
@@ -8,20 +8,21 @@
 
 import Foundation
 import WatchKit
+import DataCache
 
-class BackgroundManager {
-    private var dataProvider: DataProvider
-    private var clockConnector: ClockConnector
+class UpdateManager {
+    private let dataCache: DataCache
+    private let dataProvider: DataProvider
 
-    init(dataProvider: DataProvider, clockConnector: ClockConnector) {
+    init(dataCache: DataCache, dataProvider: DataProvider) {
+        self.dataCache = dataCache
         self.dataProvider = dataProvider
-        self.clockConnector = clockConnector
     }
 
-    func scheduleNextUpdate(completion: (() -> Void)?) {
+    private func scheduleNextUpdate(completion: (() -> Void)?) {
         guard let futureDate = self.nextScheduleDate() else { return }
-        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: futureDate, userInfo: nil) { error in
-            DataCache.shared.scheduleRefreshError = error?.localizedDescription
+        WKExtension.shared().scheduleBackgroundRefresh(withPreferredDate: futureDate, userInfo: nil) { [weak self] error in
+            self?.dataCache.debugData.scheduleRefreshError = error?.localizedDescription
             completion?()
         }
     }
@@ -40,21 +41,23 @@ class BackgroundManager {
         return calendar.date(byAdding: .minute, value: minuteGranuity, to: floorDate)
     }
 
-    func performDataUpdate(completion: (() -> Void)?) {
-        self.dataProvider.fetchCurrentStepCount(completion: { [weak self] (steps) in
+    private func performDataUpdate(completion: (() -> Void)?) {
+        self.dataProvider.fetchCurrentStepCount(completion: { [weak self] (steps, errorDescription) in
+            if let errorDescription = errorDescription {
+                self?.dataCache.debugData.pedometerGetStepCountError = errorDescription
+            }
             guard let steps = steps else {
-                DataCache.shared.dataUpdateResult = .noUpdate
+                self?.dataCache.debugData.dataUpdateResult = .noUpdate
                 completion?()
                 return
             }
-            DataCache.shared.stepCount = steps
-            DataCache.shared.dataUpdateResult = .pedometer
-            self?.clockConnector.triggerComplicationUpdate()
+            self?.dataCache.healthData.stepCount = steps
+            self?.dataCache.debugData.dataUpdateResult = .pedometer
             completion?()
         })
     }
 
-    func peformBackgroundTasks(completion: (() -> Void)) {
+    func peformTasks(completion: (() -> Void)?) {
         let operation1 = BlockOperation { [weak self] in
             let sema = DispatchSemaphore(value: 0)
             self?.performDataUpdate {
@@ -75,7 +78,7 @@ class BackgroundManager {
         loadingQueue.addOperation(operation2)
         loadingQueue.waitUntilAllOperationsAreFinished()
 
-        DataCache.shared.lastBackgroundRefresh = Date()
-        completion()
+        self.dataCache.debugData.lastBackgroundRefresh = Date()
+        completion?()
     }
 }

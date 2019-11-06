@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DataCache
 
 struct HomeView: View {
     @EnvironmentObject var provider: HomeViewProvider
@@ -26,8 +27,14 @@ struct HomeView: View {
                 Text("Change Goal")
             }
             .sheet(isPresented: $showingSetGoal) {
-                SetGoalView().environmentObject(SetGoalProvider(initialGoal: self.provider.stepGoal))
+                SetGoalView().environmentObject(SetGoalProvider(dataCache: self.provider.dataCache, initialGoal: self.provider.stepGoal))
             }
+        }
+        .onAppear() {
+            self.provider.onViewAppear()
+        }
+        .onDisappear() {
+            self.provider.onViewDisappear()
         }
         .contextMenu {
             contextMenuContent
@@ -47,7 +54,7 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingDebug) {
-                DebugView().environmentObject(DebugViewProvider())
+                DebugView().environmentObject(DebugViewProvider(dataCache: self.provider.dataCache))
             }
             #endif
         }
@@ -56,6 +63,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(HomeViewProvider())
+        HomeView().environmentObject(HomeViewProvider(dataCache: DataCache()))
     }
 }

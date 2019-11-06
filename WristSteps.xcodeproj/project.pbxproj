@@ -14,9 +14,17 @@
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* DataProvider.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
+		4C62B4CF2373456700622E46 /* DataCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C62B4CD2373456700622E46 /* DataCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C62B4D22373456700622E46 /* DataCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C62B4CB2373456700622E46 /* DataCache.framework */; };
+		4C62B4D32373456700622E46 /* DataCache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C62B4CB2373456700622E46 /* DataCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C62B4D92373457D00622E46 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62B4D82373457D00622E46 /* DataCache.swift */; };
+		4C62B4DB2373460700622E46 /* DebugData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62B4DA2373460700622E46 /* DebugData.swift */; };
+		4C62B4DD237346C700622E46 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62B4DC237346C700622E46 /* DataStore.swift */; };
+		4C62B4DF2373476C00622E46 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62B4DE2373476C00622E46 /* UserData.swift */; };
+		4C62B4E1237347FB00622E46 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C62B4E0237347FB00622E46 /* HealthData.swift */; };
 		4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA315F92360E9E40032E58D /* SetGoalView.swift */; };
 		4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */; };
-		4CA6949E235CED62005C9924 /* BackgroundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949D235CED62005C9924 /* BackgroundManager.swift */; };
+		4CA6949E235CED62005C9924 /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949D235CED62005C9924 /* UpdateManager.swift */; };
 		4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949F235CF841005C9924 /* ComplicationProvider.swift */; };
 		4CBF55452357A5C40009AF09 /* WristSteps WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4CBF554B2357A5C40009AF09 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55492357A5C40009AF09 /* Interface.storyboard */; };
@@ -32,13 +40,19 @@
 		4CBF55682357A5C70009AF09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55672357A5C70009AF09 /* Preview Assets.xcassets */; };
 		4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */; };
 		4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */; };
-		4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6EB23638567002CF290 /* DataCache.swift */; };
 		4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */; };
 		4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */; };
 		4CFBB6F52364446E002CF290 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6F42364446E002CF290 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4C62B4D02373456700622E46 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CBF553A2357A5C40009AF09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C62B4CA2373456700622E46;
+			remoteInfo = DataCache;
+		};
 		4CBF55462357A5C40009AF09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4CBF553A2357A5C40009AF09 /* Project object */;
@@ -56,6 +70,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		4C62B4D72373456700622E46 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4C62B4D32373456700622E46 /* DataCache.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBF55702357A5C70009AF09 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,9 +115,17 @@
 		4C5337A82357AB9C00E3970E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		4C5BD1032370BF6D005D65DB /* WristSteps WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WristSteps WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		4C62B4CB2373456700622E46 /* DataCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C62B4CD2373456700622E46 /* DataCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataCache.h; sourceTree = "<group>"; };
+		4C62B4CE2373456700622E46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C62B4D82373457D00622E46 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
+		4C62B4DA2373460700622E46 /* DebugData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugData.swift; sourceTree = "<group>"; };
+		4C62B4DC237346C700622E46 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		4C62B4DE2373476C00622E46 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		4C62B4E0237347FB00622E46 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		4CA315F92360E9E40032E58D /* SetGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalView.swift; sourceTree = "<group>"; };
 		4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCurrentStepView.swift; sourceTree = "<group>"; };
-		4CA6949D235CED62005C9924 /* BackgroundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundManager.swift; sourceTree = "<group>"; };
+		4CA6949D235CED62005C9924 /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		4CA6949F235CF841005C9924 /* ComplicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationProvider.swift; sourceTree = "<group>"; };
 		4CBF55402357A5C40009AF09 /* WristSteps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WristSteps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WristSteps WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,18 +145,25 @@
 		4CBF556A2357A5C70009AF09 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProvider.swift; sourceTree = "<group>"; };
 		4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalView.swift; sourceTree = "<group>"; };
-		4CFBB6EB23638567002CF290 /* DataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCache.swift; sourceTree = "<group>"; };
 		4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalViewProvider.swift; sourceTree = "<group>"; };
 		4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalEditorView.swift; sourceTree = "<group>"; };
 		4CFBB6F42364446E002CF290 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4C62B4C82373456700622E46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBF55502357A5C60009AF09 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */,
+				4C62B4D22373456700622E46 /* DataCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				4C5337A82357AB9C00E3970E /* DataProvider.swift */,
-				4CFBB6EB23638567002CF290 /* DataCache.swift */,
-				4CA6949D235CED62005C9924 /* BackgroundManager.swift */,
+				4CA6949D235CED62005C9924 /* UpdateManager.swift */,
 				4C320FFF235F860A008E46E9 /* ClockConnector.swift */,
 			);
 			path = Model;
@@ -184,6 +223,20 @@
 				4C5337AC2357ABBB00E3970E /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C62B4CC2373456700622E46 /* DataCache */ = {
+			isa = PBXGroup;
+			children = (
+				4C62B4CD2373456700622E46 /* DataCache.h */,
+				4C62B4D82373457D00622E46 /* DataCache.swift */,
+				4C62B4E0237347FB00622E46 /* HealthData.swift */,
+				4C62B4DE2373476C00622E46 /* UserData.swift */,
+				4C62B4DA2373460700622E46 /* DebugData.swift */,
+				4C62B4DC237346C700622E46 /* DataStore.swift */,
+				4C62B4CE2373456700622E46 /* Info.plist */,
+			);
+			path = DataCache;
 			sourceTree = "<group>";
 		};
 		4CA315F82360E8000032E58D /* SetGoalView */ = {
@@ -202,6 +255,7 @@
 				4C4F2D98236C5AC700EF2F0B /* WristSteps */,
 				4CBF55482357A5C40009AF09 /* WristSteps WatchKit App */,
 				4CBF55572357A5C60009AF09 /* WristSteps WatchKit Extension */,
+				4C62B4CC2373456700622E46 /* DataCache */,
 				4CBF55412357A5C40009AF09 /* Products */,
 				4C5337AB2357ABBB00E3970E /* Frameworks */,
 			);
@@ -213,6 +267,7 @@
 				4CBF55402357A5C40009AF09 /* WristSteps.app */,
 				4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */,
 				4CBF55532357A5C60009AF09 /* WristSteps WatchKit Extension.appex */,
+				4C62B4CB2373456700622E46 /* DataCache.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,7 +340,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4C62B4C62373456700622E46 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C62B4CF2373456700622E46 /* DataCache.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		4C62B4CA2373456700622E46 /* DataCache */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C62B4D42373456700622E46 /* Build configuration list for PBXNativeTarget "DataCache" */;
+			buildPhases = (
+				4C62B4C62373456700622E46 /* Headers */,
+				4C62B4C72373456700622E46 /* Sources */,
+				4C62B4C82373456700622E46 /* Frameworks */,
+				4C62B4C92373456700622E46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataCache;
+			productName = DataCache;
+			productReference = 4C62B4CB2373456700622E46 /* DataCache.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		4CBF553F2357A5C40009AF09 /* WristSteps */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CBF55752357A5C70009AF09 /* Build configuration list for PBXNativeTarget "WristSteps" */;
@@ -327,10 +411,12 @@
 				4CBF554F2357A5C60009AF09 /* Sources */,
 				4CBF55502357A5C60009AF09 /* Frameworks */,
 				4CBF55512357A5C60009AF09 /* Resources */,
+				4C62B4D72373456700622E46 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4C62B4D12373456700622E46 /* PBXTargetDependency */,
 			);
 			name = "WristSteps WatchKit Extension";
 			productName = "WristSteps WatchKit Extension";
@@ -347,6 +433,10 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Michael Schoder";
 				TargetAttributes = {
+					4C62B4CA2373456700622E46 = {
+						CreatedOnToolsVersion = 11.2;
+						LastSwiftMigration = 1120;
+					};
 					4CBF553F2357A5C40009AF09 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -374,11 +464,19 @@
 				4CBF553F2357A5C40009AF09 /* WristSteps */,
 				4CBF55432357A5C40009AF09 /* WristSteps WatchKit App */,
 				4CBF55522357A5C60009AF09 /* WristSteps WatchKit Extension */,
+				4C62B4CA2373456700622E46 /* DataCache */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4C62B4C92373456700622E46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBF553E2357A5C40009AF09 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +505,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4C62B4C72373456700622E46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C62B4D92373457D00622E46 /* DataCache.swift in Sources */,
+				4C62B4E1237347FB00622E46 /* HealthData.swift in Sources */,
+				4C62B4DD237346C700622E46 /* DataStore.swift in Sources */,
+				4C62B4DF2373476C00622E46 /* UserData.swift in Sources */,
+				4C62B4DB2373460700622E46 /* DebugData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4CBF554F2357A5C60009AF09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,10 +525,9 @@
 				4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */,
 				4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
-				4CFBB6EC23638567002CF290 /* DataCache.swift in Sources */,
 				4C05A0AB236485B00010D011 /* DebugViewProvider.swift in Sources */,
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
-				4CA6949E235CED62005C9924 /* BackgroundManager.swift in Sources */,
+				4CA6949E235CED62005C9924 /* UpdateManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
 				4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */,
 				4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */,
@@ -439,6 +548,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4C62B4D12373456700622E46 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C62B4CA2373456700622E46 /* DataCache */;
+			targetProxy = 4C62B4D02373456700622E46 /* PBXContainerItemProxy */;
+		};
 		4CBF55472357A5C40009AF09 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4CBF55432357A5C40009AF09 /* WristSteps WatchKit App */;
@@ -463,6 +577,69 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4C62B4D52373456700622E46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GQQ4RZBUL3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DataCache/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.DataCache;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		4C62B4D62373456700622E46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = GQQ4RZBUL3;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DataCache/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.DataCache;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
 		4CBF556B2357A5C70009AF09 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -702,6 +879,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4C62B4D42373456700622E46 /* Build configuration list for PBXNativeTarget "DataCache" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C62B4D52373456700622E46 /* Debug */,
+				4C62B4D62373456700622E46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4CBF553D2357A5C40009AF09 /* Build configuration list for PBXProject "WristSteps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

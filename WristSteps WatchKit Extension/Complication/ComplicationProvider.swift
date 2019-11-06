@@ -8,11 +8,17 @@
 
 import Foundation
 import UIKit
+import DataCache
 
 class ComplicationProvider {
+    var dataCache: DataCache = {
+        let dataCache = DataCache()
+        dataCache.prepare()
+        return dataCache
+    }()
 
     func getStepText() -> String {
-        return DataCache.shared.stepCount.formattedString + " steps"
+        return dataCache.healthData.stepCount.formattedString + " steps"
     }
 
     func getSampleStepText() -> String {
@@ -20,8 +26,8 @@ class ComplicationProvider {
     }
 
     func getPercentFloat() -> Float {
-        let stepCount = DataCache.shared.stepCount
-        let stepGoal = DataCache.shared.stepGoal
+        let stepCount = dataCache.healthData.stepCount
+        let stepGoal = dataCache.userData.stepGoal
 
         let calculatedPercent = Double(stepCount) / Double(stepGoal)
         let stepPercent = Int(calculatedPercent * 100)
@@ -56,8 +62,8 @@ class ComplicationProvider {
     }
 
     func getStepStepGoalText() -> String {
-        let stepCount = DataCache.shared.stepCount
-        let stepGoal = DataCache.shared.stepGoal
+        let stepCount = dataCache.healthData.stepCount
+        let stepGoal = dataCache.userData.stepGoal
         return "\(stepCount) / \(stepGoal)"
     }
 

@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import DataCache
 
 struct DebugView: View {
     @EnvironmentObject var provider: DebugViewProvider
@@ -27,6 +28,12 @@ struct DebugView: View {
                 headlineValueView(headline: "Get stepcount error",
                                   value: provider.pedometerGetStepCountErrorString)
             }
+        }
+        .onAppear() {
+            self.provider.onViewAppear()
+        }
+        .onDisappear() {
+            self.provider.onViewDisappear()
         }
     }
 
@@ -49,6 +56,6 @@ struct DebugView: View {
 
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        DebugView().environmentObject(DebugViewProvider())
+        DebugView().environmentObject(DebugViewProvider(dataCache: DataCache()))
     }
 }

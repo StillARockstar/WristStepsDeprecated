@@ -28,7 +28,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        DataCache.shared.lastComplicationRefresh = Date()
+        provider.dataCache.debugData.lastComplicationRefresh = Date()
 
         guard let complicationTemplate = getComplicationTemplate(for: complication.family) else {
             handler(nil)

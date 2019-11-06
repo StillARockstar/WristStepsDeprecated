@@ -7,15 +7,19 @@
 //
 
 import Foundation
+import DataCache
 
 class SetGoalProvider: ObservableObject {
+    let dataCache: DataCache
+
     @Published var stepGoal: Double = 0
 
-    init(initialGoal: Int) {
-        stepGoal = Double(initialGoal)
+    init(dataCache: DataCache, initialGoal: Int) {
+        self.dataCache = dataCache
+        self.stepGoal = Double(initialGoal)
     }
 
     func commitStepGoal() {
-        DataCache.shared.stepGoal = Int(stepGoal)
+        dataCache.userData.stepGoal = Int(stepGoal)
     }
 }

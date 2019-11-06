@@ -7,30 +7,52 @@
 //
 
 import Foundation
+import DataCache
 
 class HomeViewProvider: ObservableObject {
+    let dataCache: DataCache
+
     @Published var steps = 0
     @Published var stepPercent = 0
     @Published var stepGoal = 0
 
-    init() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateViewData), name: DataCacheValueUpdatedNotificationName, object: nil)
+    init(dataCache: DataCache) {
+        self.dataCache = dataCache
+    }
+
+    func onViewAppear() {
+        self.dataCache.addListener(self, for: [.healthData, .userData])
         updateViewData()
     }
 
-    @objc func updateViewData() {
-        let newStepCount = DataCache.shared.stepCount
-        let newStepGoal = DataCache.shared.stepGoal
-        self.handle(stepCount: newStepCount, stepGoal: newStepGoal)
+    func onViewDisappear() {
+        self.dataCache.removeListener(self)
     }
 
-    private func handle(stepCount: Int, stepGoal: Int) {
+    private func updateViewData() {
         DispatchQueue.main.async {
-            self.steps = stepCount
-            self.stepGoal = stepGoal
+            let newStepCount = self.dataCache.healthData.stepCount
+            let newStepGoal = self.dataCache.userData.stepGoal
+
+            self.steps = newStepCount
+            self.stepGoal = newStepGoal
 
             let calculatedPercent = Double(self.steps) / Double(self.stepGoal)
             self.stepPercent = Int(calculatedPercent * 100)
         }
+    }
+}
+
+extension HomeViewProvider: DataCacheListener {
+    func healthDataChanged(_ dataCache: DataCache) {
+        updateViewData()
+    }
+
+    func userDataChanged(_ dataCache: DataCache) {
+        updateViewData()
+    }
+
+    func debugDataChanged(_ dataCache: DataCache) {
+
     }
 }

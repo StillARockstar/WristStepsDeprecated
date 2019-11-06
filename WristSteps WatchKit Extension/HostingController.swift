@@ -9,10 +9,15 @@
 import WatchKit
 import Foundation
 import SwiftUI
+import DataCache
 
 struct ContentView: View {
+    private var dataCache: DataCache {
+        return (WKExtension.shared().delegate as! ExtensionDelegate).dataCache
+    }
+
     var body: some View {
-        HomeView().environmentObject(HomeViewProvider())
+        HomeView().environmentObject(HomeViewProvider(dataCache: dataCache))
     }
 }
 
