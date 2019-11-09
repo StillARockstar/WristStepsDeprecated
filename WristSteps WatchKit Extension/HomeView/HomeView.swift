@@ -30,6 +30,7 @@ struct HomeView: View {
                 SetGoalView().environmentObject(SetGoalProvider(dataCache: self.provider.dataCache, initialGoal: self.provider.stepGoal))
             }
         }
+        .navigationBarTitle("WristSteps")
         .onAppear() {
             self.provider.onViewAppear()
         }
