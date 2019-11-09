@@ -51,7 +51,7 @@ class ComplicationProvider {
         var stepPercent = Int(getPercentFloat())
 
         if stepPercent > 100 {
-            stepPercent = 100
+            stepPercent = stepPercent % 100 + 100
         }
 
         return UIImage(named:"radialGraph\(stepPercent)")!
