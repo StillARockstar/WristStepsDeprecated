@@ -15,9 +15,11 @@ struct SetGoalView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text("Stepgoal".uppercased())
                 .foregroundColor(.appBlue)
                 .font(.body)
+                .fixedSize()
             SetGoalEditorView().environmentObject(provider)
             Text("The recommended amount of steps is \(10000) per day")
                 .font(.footnote)
@@ -25,8 +27,6 @@ struct SetGoalView: View {
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
                 .lineLimit(nil)
-
-            Spacer()
 
             Button(action: {
                 self.provider.commitStepGoal()
