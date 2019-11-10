@@ -34,6 +34,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             handler(nil)
             return
         }
+        complicationTemplate.tintColor = .appBlue
 
         let timelineEntry = CLKComplicationTimelineEntry(date: Date(), complicationTemplate: complicationTemplate)
         handler(timelineEntry)
@@ -107,15 +108,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        switch complication.family {
-        case .graphicCorner:
-            let complication = CLKComplicationTemplateGraphicCornerTextImage()
-            complication.imageProvider = CLKFullColorImageProvider(fullColorImage: UIImage(named:"radialGraph10")!)
-            complication.textProvider = CLKTextProvider(format: "%d steps", 1000)
-            handler(complication)
-        default:
+        guard let complicationTemplate = getComplicationSamplteTemplate(for: complication.family) else {
             handler(nil)
+            return
         }
+        complicationTemplate.tintColor = .appBlue
+        handler(complicationTemplate)
     }
 
     private func getComplicationSamplteTemplate(for family: CLKComplicationFamily) -> CLKComplicationTemplate! {
