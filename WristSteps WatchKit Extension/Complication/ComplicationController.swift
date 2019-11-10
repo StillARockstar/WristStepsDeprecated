@@ -55,8 +55,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return template
         case .modularLarge:
             let template = CLKComplicationTemplateModularLargeTallBody()
-            template.headerTextProvider = CLKTextProvider(format: provider.getPercentText())
-            template.bodyTextProvider = CLKTextProvider(format: provider.getStepText())
+            template.headerTextProvider = CLKTextProvider(format: provider.getPercentLongText())
+            template.bodyTextProvider = CLKTextProvider(format: provider.getStepTextShort())
             return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
@@ -66,7 +66,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return template
         case .utilitarianSmallFlat:
             let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            template.textProvider = CLKTextProvider(format: provider.getPercentText())
+            template.textProvider = CLKTextProvider(format: provider.getPercentLongText())
             return template
         case .utilitarianLarge:
             let template = CLKComplicationTemplateUtilitarianLargeFlat()
@@ -134,8 +134,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return template
         case .modularLarge:
             let template = CLKComplicationTemplateModularLargeTallBody()
-            template.headerTextProvider = CLKTextProvider(format: provider.getSamplePercentText())
-            template.bodyTextProvider = CLKTextProvider(format: provider.getSampleStepText())
+            template.headerTextProvider = CLKTextProvider(format: provider.getSamplePercentLongText())
+            template.bodyTextProvider = CLKTextProvider(format: provider.getSampleStepTextShort())
             return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
@@ -145,7 +145,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return template
         case .utilitarianSmallFlat:
             let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            template.textProvider = CLKTextProvider(format: provider.getSamplePercentText())
+            template.textProvider = CLKTextProvider(format: provider.getSamplePercentLongText())
             return template
         case .utilitarianLarge:
             let template = CLKComplicationTemplateUtilitarianLargeFlat()

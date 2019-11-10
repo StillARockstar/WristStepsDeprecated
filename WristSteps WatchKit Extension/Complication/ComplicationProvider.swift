@@ -25,6 +25,14 @@ class ComplicationProvider {
         return 5000.formattedString + " steps"
     }
 
+    func getStepTextShort() -> String {
+        return dataCache.healthData.stepCount.formattedString
+    }
+
+    func getSampleStepTextShort() -> String {
+        return 5000.formattedString
+    }
+
     func getPercentFloat() -> Float {
         let stepCount = dataCache.healthData.stepCount
         let stepGoal = dataCache.userData.stepGoal
@@ -40,11 +48,19 @@ class ComplicationProvider {
     }
 
     func getPercentText() -> String {
-        return "\(Int(getPercentFloat()))%"
+        return "\(Int(getPercentFloat()))"
     }
 
     func getSamplePercentText() -> String {
-        return "50%"
+        return "50"
+    }
+
+    func getPercentLongText() -> String {
+        return "\(Int(getPercentFloat()))%%"
+    }
+
+    func getSamplePercentLongText() -> String {
+        return "50%%"
     }
 
     func getPercentImage() -> UIImage {
@@ -69,5 +85,14 @@ class ComplicationProvider {
 
     func getSampleStepStepGoalText() -> String {
         return "\(5000.formattedString) / \(10000.formattedString)"
+    }
+
+    func getGoalText() -> String {
+        let stepGoal = dataCache.userData.stepGoal
+        return "Goal: \(stepGoal) steps"
+    }
+
+    func getSampleGoalText() -> String {
+        return "Goal: \(10000.formattedString) steps"
     }
 }
