@@ -7,18 +7,21 @@
     },
     {
       "idiom" : "watch",
-      "scale" : "2x",
-      "screen-width" : ">161"
+      "filename" : "Icon-150x47@2x.png",
+      "screen-width" : ">161",
+      "scale" : "2x"
     },
     {
       "idiom" : "watch",
-      "scale" : "2x",
-      "screen-width" : ">145"
+      "filename" : "Icon-150x47@2x-1.png",
+      "screen-width" : ">145",
+      "scale" : "2x"
     },
     {
       "idiom" : "watch",
-      "scale" : "2x",
-      "screen-width" : ">183"
+      "filename" : "Icon-171x54@2x.png",
+      "screen-width" : ">183",
+      "scale" : "2x"
     }
   ],
   "info" : {
