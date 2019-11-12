@@ -22,6 +22,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         clockConnector = ClockConnector()
 
         updateManager = UpdateManager(dataCache: dataCache, dataProvider: DataProvider())
+    }
+
+    func applicationDidBecomeActive() {
         updateManager.peformTasks(completion: nil)
     }
 
