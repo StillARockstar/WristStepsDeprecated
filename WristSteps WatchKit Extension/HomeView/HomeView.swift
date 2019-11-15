@@ -12,6 +12,7 @@ import DataCache
 struct HomeView: View {
     @EnvironmentObject var provider: HomeViewProvider
     @State var showingSetGoal = false
+    @State var showingSetStyle = false
     @State var showingDebug = false
 
     var body: some View {
@@ -43,6 +44,19 @@ struct HomeView: View {
             .sheet(isPresented: $showingSetGoal) {
                 SetGoalView()
                     .environmentObject(SetGoalProvider(dataCache: self.provider.dataCache,initialGoal: self.provider.stepGoal))
+            }
+            Button(action: {
+                self.showingSetStyle.toggle()
+            }) {
+                VStack {
+                    Image(systemName: "paintbrush")
+                        .font(.title)
+                    Text("Style")
+                }
+            }
+            .sheet(isPresented: $showingSetStyle) {
+                SetStyleView()
+                    .environmentObject(SetStyleProvider(dataCache: self.provider.dataCache))
             }
             #if DEBUG
             Button(action: {

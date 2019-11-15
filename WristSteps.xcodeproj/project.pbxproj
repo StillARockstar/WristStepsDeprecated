@@ -13,6 +13,8 @@
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */; };
+		4C49B2B1237EFA8A00FBDEED /* SetStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */; };
+		4C49B2B5237EFAFB00FBDEED /* SetStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B4237EFAFB00FBDEED /* SetStyleView.swift */; };
 		4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* DataProvider.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
 		4C62B4CF2373456700622E46 /* DataCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C62B4CD2373456700622E46 /* DataCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,6 +115,8 @@
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewContent.swift; sourceTree = "<group>"; };
+		4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleProvider.swift; sourceTree = "<group>"; };
+		4C49B2B4237EFAFB00FBDEED /* SetStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleView.swift; sourceTree = "<group>"; };
 		4C4F2D99236C5ADF00EF2F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -188,6 +192,15 @@
 				4C05A0AC2364873A0010D011 /* DateFormatting.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4C49B2AF237EFA7100FBDEED /* SetStyleView */ = {
+			isa = PBXGroup;
+			children = (
+				4C49B2B4237EFAFB00FBDEED /* SetStyleView.swift */,
+				4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */,
+			);
+			path = SetStyleView;
 			sourceTree = "<group>";
 		};
 		4C4F2D98236C5AC700EF2F0B /* WristSteps */ = {
@@ -296,6 +309,7 @@
 				4CFBB6F323644460002CF290 /* Style */,
 				4C5337A52357AB1700E3970E /* HomeView */,
 				4CA315F82360E8000032E58D /* SetGoalView */,
+				4C49B2AF237EFA7100FBDEED /* SetStyleView */,
 				4C05A0A7236482240010D011 /* DebugView */,
 				4CBF55792357A7090009AF09 /* Complication */,
 				4CBF55782357A6F90009AF09 /* Notification */,
@@ -529,6 +543,7 @@
 				4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
 				4C05A0AB236485B00010D011 /* DebugViewProvider.swift in Sources */,
+				4C49B2B5237EFAFB00FBDEED /* SetStyleView.swift in Sources */,
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CA6949E235CED62005C9924 /* UpdateManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
@@ -546,6 +561,7 @@
 				4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */,
 				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,
 				4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */,
+				4C49B2B1237EFA8A00FBDEED /* SetStyleProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
