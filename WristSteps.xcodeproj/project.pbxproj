@@ -14,7 +14,8 @@
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */; };
 		4C49B2B1237EFA8A00FBDEED /* SetStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */; };
-		4C49B2B5237EFAFB00FBDEED /* SetStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B4237EFAFB00FBDEED /* SetStyleView.swift */; };
+		4C49B2B5237EFAFB00FBDEED /* SetStyleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */; };
+		4C49B2B7237EFE8A00FBDEED /* SetStyleListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */; };
 		4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* DataProvider.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
 		4C62B4CF2373456700622E46 /* DataCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C62B4CD2373456700622E46 /* DataCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -116,7 +117,8 @@
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewContent.swift; sourceTree = "<group>"; };
 		4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleProvider.swift; sourceTree = "<group>"; };
-		4C49B2B4237EFAFB00FBDEED /* SetStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleView.swift; sourceTree = "<group>"; };
+		4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleListView.swift; sourceTree = "<group>"; };
+		4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleListRow.swift; sourceTree = "<group>"; };
 		4C4F2D99236C5ADF00EF2F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -197,7 +199,8 @@
 		4C49B2AF237EFA7100FBDEED /* SetStyleView */ = {
 			isa = PBXGroup;
 			children = (
-				4C49B2B4237EFAFB00FBDEED /* SetStyleView.swift */,
+				4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */,
+				4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */,
 				4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */,
 			);
 			path = SetStyleView;
@@ -543,12 +546,13 @@
 				4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
 				4C05A0AB236485B00010D011 /* DebugViewProvider.swift in Sources */,
-				4C49B2B5237EFAFB00FBDEED /* SetStyleView.swift in Sources */,
+				4C49B2B5237EFAFB00FBDEED /* SetStyleListView.swift in Sources */,
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CA6949E235CED62005C9924 /* UpdateManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
 				4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */,
 				4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */,
+				4C49B2B7237EFE8A00FBDEED /* SetStyleListRow.swift in Sources */,
 				4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */,
 				4CBF555D2357A5C60009AF09 /* ExtensionDelegate.swift in Sources */,
 				4CBF55612357A5C60009AF09 /* NotificationView.swift in Sources */,
@@ -778,7 +782,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				ENABLE_PREVIEWS = YES;
@@ -788,7 +792,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.WristSteps.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -805,7 +809,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				ENABLE_PREVIEWS = YES;
@@ -815,7 +819,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.WristSteps.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -832,11 +836,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				IBSC_MODULE = WristSteps_WatchKit_Extension;
 				INFOPLIST_FILE = "WristSteps WatchKit App/Info.plist";
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.WristSteps.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -853,11 +857,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				IBSC_MODULE = WristSteps_WatchKit_Extension;
 				INFOPLIST_FILE = "WristSteps WatchKit App/Info.plist";
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.WristSteps.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -872,10 +876,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				INFOPLIST_FILE = WristSteps/Info.plist;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.WristSteps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -886,10 +890,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				INFOPLIST_FILE = WristSteps/Info.plist;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = at.Schoder.WristSteps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

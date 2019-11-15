@@ -55,7 +55,7 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingSetStyle) {
-                SetStyleView()
+                SetStyleListView()
                     .environmentObject(SetStyleProvider(dataCache: self.provider.dataCache))
             }
             #if DEBUG
