@@ -15,21 +15,8 @@ struct HomeView: View {
     @State var showingDebug = false
 
     var body: some View {
-        VStack {
-            HomeCurrentStepView(stepPercent: provider.stepPercent,stepCount: provider.steps)
-            HomeGoalView(stepGoal: provider.stepGoal)
-
-            Spacer()
-
-            Button(action: {
-                self.showingSetGoal.toggle()
-            }) {
-                Text("Change Goal")
-            }
-            .sheet(isPresented: $showingSetGoal) {
-                SetGoalView().environmentObject(SetGoalProvider(dataCache: self.provider.dataCache, initialGoal: self.provider.stepGoal))
-            }
-        }
+        HomeViewContent()
+        .environmentObject(provider)
         .navigationBarTitle("WristSteps")
         .onAppear() {
             self.provider.onViewAppear()
@@ -44,6 +31,19 @@ struct HomeView: View {
 
     private var contextMenuContent: some View {
         Group {
+            Button(action: {
+                self.showingSetGoal.toggle()
+            }) {
+                VStack {
+                    Image(systemName: "flag")
+                        .font(.title)
+                    Text("Set Goal")
+                }
+            }
+            .sheet(isPresented: $showingSetGoal) {
+                SetGoalView()
+                    .environmentObject(SetGoalProvider(dataCache: self.provider.dataCache,initialGoal: self.provider.stepGoal))
+            }
             #if DEBUG
             Button(action: {
                 self.showingDebug.toggle()
@@ -55,7 +55,8 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingDebug) {
-                DebugView().environmentObject(DebugViewProvider(dataCache: self.provider.dataCache))
+                DebugView()
+                    .environmentObject(DebugViewProvider(dataCache: self.provider.dataCache))
             }
             #endif
         }

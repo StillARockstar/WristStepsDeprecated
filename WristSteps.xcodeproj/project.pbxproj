@@ -12,6 +12,7 @@
 		4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C05A0AC2364873A0010D011 /* DateFormatting.swift */; };
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
+		4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */; };
 		4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* DataProvider.swift */; };
 		4C5337AD2357ABBB00E3970E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5337AC2357ABBB00E3970E /* HealthKit.framework */; };
 		4C62B4CF2373456700622E46 /* DataCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C62B4CD2373456700622E46 /* DataCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -111,6 +112,7 @@
 		4C05A0AC2364873A0010D011 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
+		4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewContent.swift; sourceTree = "<group>"; };
 		4C4F2D99236C5ADF00EF2F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5337A82357AB9C00E3970E /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4C5337AC2357ABBB00E3970E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				4CBF55582357A5C60009AF09 /* HomeView.swift */,
+				4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */,
 				4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */,
 				4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */,
 				4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */,
@@ -540,6 +543,7 @@
 				4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */,
 				4C05A0A9236482E40010D011 /* DebugView.swift in Sources */,
 				4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */,
+				4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */,
 				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,
 				4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */,
 			);
