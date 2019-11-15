@@ -14,9 +14,9 @@ class SetGoalProvider: ObservableObject {
 
     @Published var stepGoal: Double = 0
 
-    init(dataCache: DataCache, initialGoal: Int) {
+    init(dataCache: DataCache) {
         self.dataCache = dataCache
-        self.stepGoal = Double(initialGoal)
+        self.stepGoal = Double(dataCache.userData.stepGoal)
     }
 
     func commitStepGoal() {

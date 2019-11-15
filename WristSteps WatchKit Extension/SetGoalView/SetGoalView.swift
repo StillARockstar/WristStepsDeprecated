@@ -41,6 +41,6 @@ struct SetGoalView: View {
 
 struct SetGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        SetGoalView().environmentObject(SetGoalProvider(dataCache: DataCache(), initialGoal: 10000))
+        SetGoalView().environmentObject(SetGoalProvider(dataCache: DataCache()))
     }
 }

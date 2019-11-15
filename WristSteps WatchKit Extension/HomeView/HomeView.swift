@@ -43,7 +43,7 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingSetGoal) {
                 SetGoalView()
-                    .environmentObject(SetGoalProvider(dataCache: self.provider.dataCache,initialGoal: self.provider.stepGoal))
+                    .environmentObject(SetGoalProvider(dataCache: self.provider.dataCache))
             }
             Button(action: {
                 self.showingSetStyle.toggle()
