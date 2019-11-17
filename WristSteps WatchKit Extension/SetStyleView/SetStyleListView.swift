@@ -15,16 +15,27 @@ struct SetStyleListView: View {
     var body: some View {
         List {
             Section(header: Text("Active Complications")) {
-                ForEach(provider.activeComplicationFamilies, id: \.title) { rowItem in
-                    SetStyleListRow(rowItem: rowItem)
+                ForEach(0 ..< provider.activeComplicationFamilies.count) {
+                    self.row(
+                        rowItem: self.provider.activeComplicationFamilies[$0],
+                        index: $0)
                 }
             }
 
             Section(header: Text("All Complications")) {
-                ForEach(provider.allComplicationFamilies, id: \.title) { rowItem in
-                    SetStyleListRow(rowItem: rowItem)
+                ForEach(0 ..< provider.allComplicationFamilies.count) {
+                    self.row(
+                        rowItem: self.provider.allComplicationFamilies[$0],
+                        index: self.provider.activeComplicationFamilies.count + $0)
                 }
             }
+        }
+    }
+
+    func row(rowItem: SetStyleListRowItem, index: Int) -> some View {
+        SetStyleListRow(rowItem: rowItem)
+            .onTapGesture {
+                print("Tapped: \(index)")
         }
     }
 }
