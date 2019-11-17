@@ -17,24 +17,36 @@ struct SetStyleListRowItem {
 
 class SetStyleProvider: ObservableObject {
     let dataCache: DataCache
-    let activeComplicationFamilies: [SetStyleListRowItem]
-    let allComplicationFamilies: [SetStyleListRowItem]
+    let clockConnector: ClockConnector
+    @Published var activeComplicationFamilies: [SetStyleListRowItem] = []
+    @Published var allComplicationFamilies: [SetStyleListRowItem] = []
 
-    init(dataCache: DataCache) {
+    init(dataCache: DataCache, clockConnector: ClockConnector) {
         self.dataCache = dataCache
-        activeComplicationFamilies = [
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family")
-        ]
-        allComplicationFamilies = [
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-            SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: "Some Family"),
-        ]
+        self.clockConnector = clockConnector
+        buildLists()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(buildLists), name: NSNotification.Name.CLKComplicationServerActiveComplicationsDidChange, object: nil)
+    }
+
+    @objc func buildLists() {
+        buildActiveList()
+        buildAllList()
+    }
+
+    private func buildActiveList() {
+        activeComplicationFamilies.removeAll()
+
+        for family in clockConnector.getActiveComplicationFamilies() {
+            activeComplicationFamilies.append(SetStyleListRowItem(thumbImage: Image( "radialGraph0"), title: family.appDisplayName))
+        }
+    }
+
+    private func buildAllList() {
+        allComplicationFamilies.removeAll()
+
+        for family in clockConnector.getAllSupportedComplicationFamilies() {
+            allComplicationFamilies.append(SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: family.appDisplayName))
+        }
     }
 }

@@ -12,14 +12,12 @@ import DataCache
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     let dataCache = DataCache()
-    private var clockConnector: ClockConnector!
+    let clockConnector = ClockConnector()
     private var updateManager: UpdateManager!
 
     func applicationDidFinishLaunching() {
         dataCache.prepare()
         dataCache.addListener(self, for: [.healthData, .userData, .debugData])
-
-        clockConnector = ClockConnector()
 
         updateManager = UpdateManager(dataCache: dataCache, dataProvider: DataProvider())
     }

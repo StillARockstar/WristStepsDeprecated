@@ -11,13 +11,15 @@ import DataCache
 
 class HomeViewProvider: ObservableObject {
     let dataCache: DataCache
+    let clockConnector: ClockConnector
 
     @Published var steps = 0
     @Published var stepPercent = 0
     @Published var stepGoal = 0
 
-    init(dataCache: DataCache) {
+    init(dataCache: DataCache, clockConnector: ClockConnector) {
         self.dataCache = dataCache
+        self.clockConnector = clockConnector
     }
 
     func onViewAppear() {

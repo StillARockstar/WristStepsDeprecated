@@ -56,7 +56,7 @@ struct HomeView: View {
             }
             .sheet(isPresented: $showingSetStyle) {
                 SetStyleListView()
-                    .environmentObject(SetStyleProvider(dataCache: self.provider.dataCache))
+                    .environmentObject(SetStyleProvider(dataCache: self.provider.dataCache, clockConnector: self.provider.clockConnector))
             }
             #if DEBUG
             Button(action: {
@@ -79,6 +79,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(HomeViewProvider(dataCache: DataCache()))
+        HomeView().environmentObject(HomeViewProvider(dataCache: DataCache(), clockConnector: ClockConnector()))
     }
 }

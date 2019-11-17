@@ -16,8 +16,12 @@ struct ContentView: View {
         return (WKExtension.shared().delegate as! ExtensionDelegate).dataCache
     }
 
+    private var clockConnector: ClockConnector {
+        return (WKExtension.shared().delegate as! ExtensionDelegate).clockConnector
+    }
+
     var body: some View {
-        HomeView().environmentObject(HomeViewProvider(dataCache: dataCache))
+        HomeView().environmentObject(HomeViewProvider(dataCache: dataCache, clockConnector: clockConnector))
     }
 }
 

@@ -31,6 +31,6 @@ struct HomeViewContent: View {
 
 struct HomeViewContent_Previews: PreviewProvider {
     static var previews: some View {
-        HomeViewContent().environmentObject(HomeViewProvider(dataCache: DataCache()))
+        HomeViewContent().environmentObject(HomeViewProvider(dataCache: DataCache(), clockConnector: ClockConnector()))
     }
 }

@@ -19,4 +19,55 @@ class ClockConnector {
             server.reloadTimeline(for: complication)
         }
     }
+
+    func getActiveComplicationFamilies() -> [CLKComplicationFamily] {
+        return server.activeComplications?.map({ $0.family }) ?? []
+    }
+
+    func getAllSupportedComplicationFamilies() -> [CLKComplicationFamily] {
+        var families = [CLKComplicationFamily]()
+        families.append(.modularSmall)
+        families.append(.modularLarge)
+        families.append(.utilitarianSmall)
+        families.append(.utilitarianSmallFlat)
+        families.append(.utilitarianLarge)
+        families.append(.circularSmall)
+        families.append(.extraLarge)
+        families.append(.graphicCorner)
+        families.append(.graphicBezel)
+        families.append(.graphicCircular)
+        families.append(.graphicRectangular)
+        return families
+    }
+}
+
+extension CLKComplicationFamily {
+    var appDisplayName: String {
+        switch self {
+        case .modularSmall:
+            return "Modular Small"
+        case .modularLarge:
+            return "Modular Large"
+        case .utilitarianSmall:
+            return "Utilitarian Small"
+        case .utilitarianSmallFlat:
+            return "Utilitarian Small Flat"
+        case .utilitarianLarge:
+            return "Utilitarian Large"
+        case .circularSmall:
+            return "Circluar Small"
+        case .extraLarge:
+            return "Extra Large"
+        case .graphicCorner:
+            return "Graphic Corner"
+        case .graphicBezel:
+            return "Graphic Bezel"
+        case .graphicCircular:
+            return "Graphic Circluar"
+        case .graphicRectangular:
+            return "Graphic Rectangular"
+        @unknown default:
+            return ""
+        }
+    }
 }
