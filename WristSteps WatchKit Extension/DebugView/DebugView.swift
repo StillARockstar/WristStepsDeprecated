@@ -35,6 +35,7 @@ struct DebugView: View {
         .onDisappear() {
             self.provider.onViewDisappear()
         }
+        .navigationBarTitle("Debug")
     }
 
     func headlineValueView(headline: String, value: String) -> some View {

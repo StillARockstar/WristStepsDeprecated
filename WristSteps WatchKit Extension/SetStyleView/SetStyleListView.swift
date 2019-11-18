@@ -30,6 +30,7 @@ struct SetStyleListView: View {
                 }
             }
         }
+        .navigationBarTitle("Set Style")
     }
 
     func row(rowItem: SetStyleListRowItem, index: Int) -> some View {

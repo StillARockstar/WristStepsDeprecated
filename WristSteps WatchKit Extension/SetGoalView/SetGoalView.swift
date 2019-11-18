@@ -36,6 +36,7 @@ struct SetGoalView: View {
             }
             .cornerRadius(40.0)
         }
+        .navigationBarTitle("Set Goal")
     }
 }
 

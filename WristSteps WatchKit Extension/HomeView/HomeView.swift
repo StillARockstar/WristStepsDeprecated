@@ -11,9 +11,6 @@ import DataCache
 
 struct HomeView: View {
     @EnvironmentObject var provider: HomeViewProvider
-    @State var showingSetGoal = false
-    @State var showingSetStyle = false
-    @State var showingDebug = false
 
     var body: some View {
         HomeViewContent()
@@ -32,48 +29,49 @@ struct HomeView: View {
 
     private var contextMenuContent: some View {
         Group {
-            Button(action: {
-                self.showingSetGoal.toggle()
-            }) {
+            NavigationLink(destination: setGoalView) {
                 VStack {
                     Image(systemName: "flag")
                         .font(.title)
-                    Text("Set Goal")
+                    Text("Goal")
                 }
             }
-            .sheet(isPresented: $showingSetGoal) {
-                SetGoalView()
-                    .environmentObject(SetGoalProvider(dataCache: self.provider.dataCache))
-            }
-            Button(action: {
-                self.showingSetStyle.toggle()
-            }) {
+            NavigationLink(destination: setStyleView) {
                 VStack {
                     Image(systemName: "paintbrush")
                         .font(.title)
                     Text("Style")
                 }
             }
-            .sheet(isPresented: $showingSetStyle) {
-                SetStyleListView()
-                    .environmentObject(SetStyleProvider(dataCache: self.provider.dataCache, clockConnector: self.provider.clockConnector))
-            }
             #if DEBUG
-            Button(action: {
-                self.showingDebug.toggle()
-            }) {
+            NavigationLink(destination: debugView) {
                 VStack{
                     Image(systemName: "info")
                         .font(.title)
                     Text("Debug")
                 }
             }
-            .sheet(isPresented: $showingDebug) {
-                DebugView()
-                    .environmentObject(DebugViewProvider(dataCache: self.provider.dataCache))
-            }
             #endif
         }
+    }
+
+    var setGoalView: some View {
+        SetGoalView()
+            .environmentObject(SetGoalProvider(
+                dataCache: self.provider.dataCache))
+    }
+
+    var setStyleView: some View {
+        SetStyleListView()
+            .environmentObject(SetStyleProvider(
+                dataCache: self.provider.dataCache,
+                clockConnector: self.provider.clockConnector))
+    }
+
+    var debugView: some View {
+        DebugView()
+            .environmentObject(DebugViewProvider(
+                dataCache: self.provider.dataCache))
     }
 }
 
