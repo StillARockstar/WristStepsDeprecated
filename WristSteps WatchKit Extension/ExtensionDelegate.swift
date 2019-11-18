@@ -30,6 +30,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         for task in backgroundTasks {
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:
+                dataCache.debugData.lastBackgroundRefresh = Date()
                 updateManager.peformTasks {
                     backgroundTask.setTaskCompletedWithSnapshot(false)
                 }

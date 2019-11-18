@@ -27,6 +27,16 @@ public class DebugData {
         }
     }
 
+    public var lastDataRefresh: Date? {
+        get {
+            return dataStore.read(key: .dataRefresh) as? Date
+        }
+        set {
+            dataStore.write(value: newValue, key: .dataRefresh)
+            onDataChanged?()
+        }
+    }
+
     public var lastComlicationTrigger: Date? {
         get {
             return dataStore.read(key: .complicationTrigger) as? Date

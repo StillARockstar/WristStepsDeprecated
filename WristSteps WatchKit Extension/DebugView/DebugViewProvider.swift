@@ -13,6 +13,7 @@ class DebugViewProvider: ObservableObject {
     let dataCache: DataCache
 
     @Published var lastBackgroundRefreshString: String = "--"
+    @Published var lastDataRefreshString: String = "--"
     @Published var lastComplicationTriggerString: String = "--"
     @Published var lastComplicationRefreshString: String = "--"
     @Published var stepCountUpdateResultString: String = "--"
@@ -34,9 +35,12 @@ class DebugViewProvider: ObservableObject {
 
     private func updateViewData() {
         DispatchQueue.main.async {
-            self.lastBackgroundRefreshString = self.dataCache.debugData.lastBackgroundRefresh?.formattedString(format: "yyyy-MM-dd HH:mm:ss") ?? "--"
-            self.lastComplicationTriggerString = self.dataCache.debugData.lastComlicationTrigger?.formattedString(format: "yyyy-MM-dd HH:mm:ss") ?? "--"
-            self.lastComplicationRefreshString = self.dataCache.debugData.lastComplicationRefresh?.formattedString(format: "yyyy-MM-dd HH:mm:ss") ?? "--"
+            let debugDateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            self.lastBackgroundRefreshString = self.dataCache.debugData.lastBackgroundRefresh?.formattedString(format: debugDateFormat) ?? "--"
+            self.lastDataRefreshString = self.dataCache.debugData.lastDataRefresh?.formattedString(format: debugDateFormat) ?? "--"
+            self.lastComplicationTriggerString = self.dataCache.debugData.lastComlicationTrigger?.formattedString(format: debugDateFormat) ?? "--"
+            self.lastComplicationRefreshString = self.dataCache.debugData.lastComplicationRefresh?.formattedString(format: debugDateFormat) ?? "--"
             self.stepCountUpdateResultString = self.dataCache.debugData.dataUpdateResult?.rawValue ?? "--"
             self.scheduleRefreshErrorString = self.dataCache.debugData.scheduleRefreshError ?? "--"
             self.pedometerGetStepCountErrorString = self.dataCache.debugData.pedometerGetStepCountError ?? "--"
