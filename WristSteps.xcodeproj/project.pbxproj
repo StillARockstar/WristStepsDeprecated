@@ -13,7 +13,7 @@
 		4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C320FFF235F860A008E46E9 /* ClockConnector.swift */; };
 		4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C321004235F9052008E46E9 /* NumberFormatting.swift */; };
 		4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */; };
-		4C49B2B1237EFA8A00FBDEED /* SetStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */; };
+		4C49B2B1237EFA8A00FBDEED /* SetStyleListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B0237EFA8A00FBDEED /* SetStyleListProvider.swift */; };
 		4C49B2B5237EFAFB00FBDEED /* SetStyleListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */; };
 		4C49B2B7237EFE8A00FBDEED /* SetStyleListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */; };
 		4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5337A82357AB9C00E3970E /* DataProvider.swift */; };
@@ -43,6 +43,8 @@
 		4CBF55652357A5C70009AF09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55642357A5C70009AF09 /* Assets.xcassets */; };
 		4CBF55682357A5C70009AF09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55672357A5C70009AF09 /* Preview Assets.xcassets */; };
 		4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */; };
+		4CCE27B12383179400405B8E /* SetStyleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE27B02383179400405B8E /* SetStyleDetailView.swift */; };
+		4CCE27B3238319DD00405B8E /* SetStyleDetailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE27B2238319DD00405B8E /* SetStyleDetailProvider.swift */; };
 		4CEC045A2360DFBF0010EFAA /* HomeGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */; };
 		4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */; };
 		4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */; };
@@ -116,7 +118,7 @@
 		4C320FFF235F860A008E46E9 /* ClockConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConnector.swift; sourceTree = "<group>"; };
 		4C321004235F9052008E46E9 /* NumberFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatting.swift; sourceTree = "<group>"; };
 		4C49B2AD237EF87900FBDEED /* HomeViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewContent.swift; sourceTree = "<group>"; };
-		4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleProvider.swift; sourceTree = "<group>"; };
+		4C49B2B0237EFA8A00FBDEED /* SetStyleListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleListProvider.swift; sourceTree = "<group>"; };
 		4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleListView.swift; sourceTree = "<group>"; };
 		4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleListRow.swift; sourceTree = "<group>"; };
 		4C4F2D99236C5ADF00EF2F0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -152,6 +154,8 @@
 		4CBF55692357A5C70009AF09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CBF556A2357A5C70009AF09 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		4CBF557A2357A7A00009AF09 /* HomeViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProvider.swift; sourceTree = "<group>"; };
+		4CCE27B02383179400405B8E /* SetStyleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleDetailView.swift; sourceTree = "<group>"; };
+		4CCE27B2238319DD00405B8E /* SetStyleDetailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetStyleDetailProvider.swift; sourceTree = "<group>"; };
 		4CEC04592360DFBF0010EFAA /* HomeGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGoalView.swift; sourceTree = "<group>"; };
 		4CFBB6EF23643E99002CF290 /* SetGoalViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalViewProvider.swift; sourceTree = "<group>"; };
 		4CFBB6F1236441A4002CF290 /* SetGoalEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGoalEditorView.swift; sourceTree = "<group>"; };
@@ -199,9 +203,8 @@
 		4C49B2AF237EFA7100FBDEED /* SetStyleView */ = {
 			isa = PBXGroup;
 			children = (
-				4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */,
-				4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */,
-				4C49B2B0237EFA8A00FBDEED /* SetStyleProvider.swift */,
+				4CCE27AE2383173E00405B8E /* SetStyleList */,
+				4CCE27AF2383174900405B8E /* SetStyleDetail */,
 			);
 			path = SetStyleView;
 			sourceTree = "<group>";
@@ -348,6 +351,25 @@
 				4CA6949F235CF841005C9924 /* ComplicationProvider.swift */,
 			);
 			path = Complication;
+			sourceTree = "<group>";
+		};
+		4CCE27AE2383173E00405B8E /* SetStyleList */ = {
+			isa = PBXGroup;
+			children = (
+				4C49B2B4237EFAFB00FBDEED /* SetStyleListView.swift */,
+				4C49B2B6237EFE8A00FBDEED /* SetStyleListRow.swift */,
+				4C49B2B0237EFA8A00FBDEED /* SetStyleListProvider.swift */,
+			);
+			path = SetStyleList;
+			sourceTree = "<group>";
+		};
+		4CCE27AF2383174900405B8E /* SetStyleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4CCE27B02383179400405B8E /* SetStyleDetailView.swift */,
+				4CCE27B2238319DD00405B8E /* SetStyleDetailProvider.swift */,
+			);
+			path = SetStyleDetail;
 			sourceTree = "<group>";
 		};
 		4CFBB6F323644460002CF290 /* Style */ = {
@@ -550,6 +572,7 @@
 				4CBF55592357A5C60009AF09 /* HomeView.swift in Sources */,
 				4CA6949E235CED62005C9924 /* UpdateManager.swift in Sources */,
 				4CBF555F2357A5C60009AF09 /* NotificationController.swift in Sources */,
+				4CCE27B3238319DD00405B8E /* SetStyleDetailProvider.swift in Sources */,
 				4CA315FA2360E9E40032E58D /* SetGoalView.swift in Sources */,
 				4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */,
 				4C49B2B7237EFE8A00FBDEED /* SetStyleListRow.swift in Sources */,
@@ -557,6 +580,7 @@
 				4CBF555D2357A5C60009AF09 /* ExtensionDelegate.swift in Sources */,
 				4CBF55612357A5C60009AF09 /* NotificationView.swift in Sources */,
 				4CFBB6F52364446E002CF290 /* Colors.swift in Sources */,
+				4CCE27B12383179400405B8E /* SetStyleDetailView.swift in Sources */,
 				4CBF55632357A5C60009AF09 /* ComplicationController.swift in Sources */,
 				4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */,
 				4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */,
@@ -565,7 +589,7 @@
 				4C49B2AE237EF87900FBDEED /* HomeViewContent.swift in Sources */,
 				4C321000235F860A008E46E9 /* ClockConnector.swift in Sources */,
 				4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */,
-				4C49B2B1237EFA8A00FBDEED /* SetStyleProvider.swift in Sources */,
+				4C49B2B1237EFA8A00FBDEED /* SetStyleListProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,7 +808,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				ENABLE_PREVIEWS = YES;
@@ -811,7 +835,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				ENABLE_PREVIEWS = YES;
@@ -838,7 +862,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				IBSC_MODULE = WristSteps_WatchKit_Extension;
 				INFOPLIST_FILE = "WristSteps WatchKit App/Info.plist";
@@ -859,7 +883,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				IBSC_MODULE = WristSteps_WatchKit_Extension;
 				INFOPLIST_FILE = "WristSteps WatchKit App/Info.plist";
@@ -878,7 +902,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				INFOPLIST_FILE = WristSteps/Info.plist;
 				MARKETING_VERSION = 1.1.0;
@@ -892,7 +916,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				INFOPLIST_FILE = WristSteps/Info.plist;
 				MARKETING_VERSION = 1.1.0;

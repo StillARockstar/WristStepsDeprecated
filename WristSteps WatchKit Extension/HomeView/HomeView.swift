@@ -63,7 +63,7 @@ struct HomeView: View {
 
     var setStyleView: some View {
         SetStyleListView()
-            .environmentObject(SetStyleProvider(
+            .environmentObject(SetStyleListProvider(
                 dataCache: self.provider.dataCache,
                 clockConnector: self.provider.clockConnector))
     }

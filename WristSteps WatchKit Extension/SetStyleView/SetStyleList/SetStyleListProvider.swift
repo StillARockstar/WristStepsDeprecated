@@ -1,5 +1,5 @@
 //
-//  SetStyleProvider.swift
+//  SetStyleListProvider.swift
 //  WristSteps WatchKit Extension
 //
 //  Created by Michael Schoder on 15.11.19.
@@ -11,11 +11,17 @@ import SwiftUI
 import DataCache
 
 struct SetStyleListRowItem {
-    let thumbImage: Image
-    let title: String
+    let family: CLKComplicationFamily
+
+    var thumbImage: Image {
+        return Image( "radialGraph0")
+    }
+    var title: String {
+        return family.appDisplayName
+    }
 }
 
-class SetStyleProvider: ObservableObject {
+class SetStyleListProvider: ObservableObject {
     let dataCache: DataCache
     let clockConnector: ClockConnector
     @Published var activeComplicationFamilies: [SetStyleListRowItem] = []
@@ -38,7 +44,7 @@ class SetStyleProvider: ObservableObject {
         activeComplicationFamilies.removeAll()
 
         for family in clockConnector.getActiveComplicationFamilies() {
-            activeComplicationFamilies.append(SetStyleListRowItem(thumbImage: Image( "radialGraph0"), title: family.appDisplayName))
+            activeComplicationFamilies.append(SetStyleListRowItem(family: family))
         }
     }
 
@@ -46,7 +52,7 @@ class SetStyleProvider: ObservableObject {
         allComplicationFamilies.removeAll()
 
         for family in clockConnector.getAllSupportedComplicationFamilies() {
-            allComplicationFamilies.append(SetStyleListRowItem(thumbImage: Image("radialGraph0"), title: family.appDisplayName))
+            allComplicationFamilies.append(SetStyleListRowItem(family: family))
         }
     }
 }
