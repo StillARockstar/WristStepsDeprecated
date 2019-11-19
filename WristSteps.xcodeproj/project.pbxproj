@@ -30,6 +30,8 @@
 		4CA694982357AF46005C9924 /* HomeCurrentStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */; };
 		4CA6949E235CED62005C9924 /* UpdateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949D235CED62005C9924 /* UpdateManager.swift */; };
 		4CA694A0235CF841005C9924 /* ComplicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA6949F235CF841005C9924 /* ComplicationProvider.swift */; };
+		4CBB472D2384832200D69418 /* NewComplicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB472C2384832200D69418 /* NewComplicationProvider.swift */; };
+		4CBB47302384840500D69418 /* GraphicCornerComplicationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB472F2384840500D69418 /* GraphicCornerComplicationProvider.swift */; };
 		4CBF55452357A5C40009AF09 /* WristSteps WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4CBF554B2357A5C40009AF09 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF55492357A5C40009AF09 /* Interface.storyboard */; };
 		4CBF554D2357A5C60009AF09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBF554C2357A5C60009AF09 /* Assets.xcassets */; };
@@ -137,6 +139,8 @@
 		4CA694972357AF46005C9924 /* HomeCurrentStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCurrentStepView.swift; sourceTree = "<group>"; };
 		4CA6949D235CED62005C9924 /* UpdateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateManager.swift; sourceTree = "<group>"; };
 		4CA6949F235CF841005C9924 /* ComplicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationProvider.swift; sourceTree = "<group>"; };
+		4CBB472C2384832200D69418 /* NewComplicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewComplicationProvider.swift; sourceTree = "<group>"; };
+		4CBB472F2384840500D69418 /* GraphicCornerComplicationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCornerComplicationProvider.swift; sourceTree = "<group>"; };
 		4CBF55402357A5C40009AF09 /* WristSteps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WristSteps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBF55442357A5C40009AF09 /* WristSteps WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WristSteps WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBF554A2357A5C40009AF09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -271,6 +275,15 @@
 			path = SetGoalView;
 			sourceTree = "<group>";
 		};
+		4CBB472E2384836200D69418 /* ComplicationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				4CBB472C2384832200D69418 /* NewComplicationProvider.swift */,
+				4CBB472F2384840500D69418 /* GraphicCornerComplicationProvider.swift */,
+			);
+			path = ComplicationProvider;
+			sourceTree = "<group>";
+		};
 		4CBF55392357A5C40009AF09 = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +362,7 @@
 			children = (
 				4CBF55622357A5C60009AF09 /* ComplicationController.swift */,
 				4CA6949F235CF841005C9924 /* ComplicationProvider.swift */,
+				4CBB472E2384836200D69418 /* ComplicationProvider */,
 			);
 			path = Complication;
 			sourceTree = "<group>";
@@ -566,6 +580,7 @@
 				4CBF555B2357A5C60009AF09 /* HostingController.swift in Sources */,
 				4C5337A92357AB9C00E3970E /* DataProvider.swift in Sources */,
 				4C05A0AD2364873A0010D011 /* DateFormatting.swift in Sources */,
+				4CBB472D2384832200D69418 /* NewComplicationProvider.swift in Sources */,
 				4CBF557B2357A7A00009AF09 /* HomeViewProvider.swift in Sources */,
 				4C05A0AB236485B00010D011 /* DebugViewProvider.swift in Sources */,
 				4C49B2B5237EFAFB00FBDEED /* SetStyleListView.swift in Sources */,
@@ -583,6 +598,7 @@
 				4CCE27B12383179400405B8E /* SetStyleDetailView.swift in Sources */,
 				4CBF55632357A5C60009AF09 /* ComplicationController.swift in Sources */,
 				4C321005235F9052008E46E9 /* NumberFormatting.swift in Sources */,
+				4CBB47302384840500D69418 /* GraphicCornerComplicationProvider.swift in Sources */,
 				4CFBB6F023643E99002CF290 /* SetGoalViewProvider.swift in Sources */,
 				4C05A0A9236482E40010D011 /* DebugView.swift in Sources */,
 				4CFBB6F2236441A4002CF290 /* SetGoalEditorView.swift in Sources */,
@@ -808,7 +824,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				ENABLE_PREVIEWS = YES;
@@ -835,7 +851,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "WristSteps WatchKit Extension/WristSteps WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"WristSteps WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				ENABLE_PREVIEWS = YES;
@@ -862,7 +878,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				IBSC_MODULE = WristSteps_WatchKit_Extension;
 				INFOPLIST_FILE = "WristSteps WatchKit App/Info.plist";
@@ -883,7 +899,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				IBSC_MODULE = WristSteps_WatchKit_Extension;
 				INFOPLIST_FILE = "WristSteps WatchKit App/Info.plist";
@@ -902,7 +918,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				INFOPLIST_FILE = WristSteps/Info.plist;
 				MARKETING_VERSION = 1.1.0;
@@ -916,7 +932,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = GQQ4RZBUL3;
 				INFOPLIST_FILE = WristSteps/Info.plist;
 				MARKETING_VERSION = 1.1.0;

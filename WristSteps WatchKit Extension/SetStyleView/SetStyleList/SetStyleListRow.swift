@@ -22,7 +22,7 @@ struct SetStyleListRow: View {
 
 struct SetStyleListRow_Previews: PreviewProvider {
     static var previews: some View {
-        SetStyleListRow(rowItem: SetStyleListRowItem(family: .graphicCircular))
+        SetStyleListRow(rowItem: SetStyleListRowItem(family: .graphicCircular, thumbImage: Image("radialGraph0"), title: "Graphic Circular"))
             .previewLayout(.fixed(width: 150, height: 45))
     }
 }

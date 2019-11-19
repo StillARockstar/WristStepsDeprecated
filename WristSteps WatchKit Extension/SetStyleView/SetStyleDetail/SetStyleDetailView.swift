@@ -16,15 +16,15 @@ struct SetStyleDetailView: View {
 
     var body: some View {
         VStack {
-            Picker(selection: $provider.selectedStyle, label: Text("Style")) {
-                ForEach(0..<provider.availableStyles.count) { index in
-                    self.provider.availableStyles[index].tag(index)
+            Picker(selection: $provider.selectedStyleIndex, label: Text("Style")) {
+                ForEach(0..<provider.availableStylePreviews.count) { index in
+                    self.provider.availableStylePreviews[index].tag(index)
                 }
             }
             .frame(height: 68)
-            Picker(selection: $provider.selectedColor, label: Text("Color")) {
-                ForEach(0..<provider.availableColors.count) { index in
-                    Text(self.provider.availableColors[index]).tag(index)
+            Picker(selection: $provider.selectedColorIndex, label: Text("Color")) {
+                ForEach(0..<provider.availableColorNames.count) { index in
+                    Text(self.provider.availableColorNames[index]).tag(index)
                 }
             }
             .frame(height: 40)
@@ -42,6 +42,6 @@ struct SetStyleDetailView: View {
 
 struct SetStyleDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SetStyleDetailView().environmentObject(SetStyleDetailProvider(dataCache: DataCache(), family: .graphicCircular))
+        SetStyleDetailView().environmentObject(SetStyleDetailProvider(dataCache: DataCache(), clockConnector: ClockConnector(), family: .graphicCircular))
     }
 }

@@ -13,16 +13,18 @@ import DataCache
 
 class SetStyleDetailProvider: ObservableObject {
     let dataCache: DataCache
+    let clockConnector: ClockConnector
     let family: CLKComplicationFamily
 
-    private(set) var availableStyles: [Image] = []
-    private(set) var availableColors: [String] = []
+    private(set) var availableStylePreviews: [Image] = []
+    private(set) var availableColorNames: [String] = []
 
-    @Published var selectedStyle: Int = 0
-    @Published var selectedColor: Int = 0
+    @Published var selectedStyleIndex: Int = 0
+    @Published var selectedColorIndex: Int = 0
 
-    init(dataCache: DataCache, family: CLKComplicationFamily) {
+    init(dataCache: DataCache, clockConnector: ClockConnector, family: CLKComplicationFamily) {
         self.dataCache = dataCache
+        self.clockConnector = clockConnector
         self.family = family
 
         buildStylePicker()
@@ -30,17 +32,19 @@ class SetStyleDetailProvider: ObservableObject {
     }
 
     private func buildStylePicker() {
-        availableStyles.removeAll()
-        availableStyles = [Image("radialGraph0"), Image("radialGraph10"), Image("radialGraph20"), Image("radialGraph30"), Image("radialGraph40")]
+        availableStylePreviews.removeAll()
+        availableStylePreviews = clockConnector.availableTemplateStyles(for: family).map({ Image(uiImage: $0.previewImage) })
     }
 
     private func buildColorPicker() {
-        availableColors.removeAll()
-        availableColors = ["Orange", "Green", "Red", "Blue", "Cyan"]
+        availableColorNames.removeAll()
+        availableColorNames = clockConnector.availableColorStyles(for: family).map({ $0.previewName })
     }
 
     func commitCurrentStyleConfiguration() {
-        print("Selected Style: \(selectedStyle)")
-        print("Selected Color: \(selectedColor)")
+        let selectedStyle = clockConnector.availableTemplateStyles(for: family)[selectedStyleIndex]
+        let selectedColor = clockConnector.availableColorStyles(for: family)[selectedColorIndex]
+        print("Selected Style: \(selectedStyle.id)")
+        print("Selected Color: \(selectedColor.id)")
     }
 }

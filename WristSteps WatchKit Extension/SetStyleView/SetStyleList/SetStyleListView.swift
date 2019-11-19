@@ -38,7 +38,8 @@ struct SetStyleListView: View {
     func detailView(family: CLKComplicationFamily) -> some View {
         return SetStyleDetailView()
             .environmentObject(SetStyleDetailProvider(
-                dataCache: DataCache(),
+                dataCache: provider.dataCache,
+                clockConnector: provider.clockConnector,
                 family: family))
     }
 }

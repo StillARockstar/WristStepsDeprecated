@@ -12,13 +12,8 @@ import DataCache
 
 struct SetStyleListRowItem {
     let family: CLKComplicationFamily
-
-    var thumbImage: Image {
-        return Image( "radialGraph0")
-    }
-    var title: String {
-        return family.appDisplayName
-    }
+    let thumbImage: Image
+    let title: String
 }
 
 class SetStyleListProvider: ObservableObject {
@@ -44,7 +39,8 @@ class SetStyleListProvider: ObservableObject {
         activeComplicationFamilies.removeAll()
 
         for family in clockConnector.getActiveComplicationFamilies() {
-            activeComplicationFamilies.append(SetStyleListRowItem(family: family))
+            let thumbImage = Image(uiImage: clockConnector.selectedTemplateStyle(for: family)?.previewImage ?? UIImage())
+            activeComplicationFamilies.append(SetStyleListRowItem(family: family, thumbImage: thumbImage, title: family.appDisplayName))
         }
     }
 
@@ -52,7 +48,8 @@ class SetStyleListProvider: ObservableObject {
         allComplicationFamilies.removeAll()
 
         for family in clockConnector.getAllSupportedComplicationFamilies() {
-            allComplicationFamilies.append(SetStyleListRowItem(family: family))
+            let thumbImage = Image(uiImage: clockConnector.selectedTemplateStyle(for: family)?.previewImage ?? UIImage())
+            allComplicationFamilies.append(SetStyleListRowItem(family: family, thumbImage: thumbImage, title: family.appDisplayName))
         }
     }
 }

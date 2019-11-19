@@ -39,6 +39,22 @@ class ClockConnector {
         families.append(.graphicRectangular)
         return families
     }
+
+    func availableTemplateStyles(for complicationFamily: CLKComplicationFamily) -> [TemplateStyle] {
+        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.availableTemplateStyles ?? []
+    }
+
+    func availableColorStyles(for complicationFamily: CLKComplicationFamily) -> [ColorStyle] {
+        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.availableColorStyles ?? []
+    }
+
+    func selectedTemplateStyle(for complicationFamily: CLKComplicationFamily) -> TemplateStyle? {
+        return nil
+    }
+
+    func selectedColorStyle(for complicationFamily: CLKComplicationFamily) -> ColorStyle? {
+        return nil
+    }
 }
 
 extension CLKComplicationFamily {
