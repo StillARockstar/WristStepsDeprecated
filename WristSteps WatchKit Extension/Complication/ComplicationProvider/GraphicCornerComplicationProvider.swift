@@ -12,10 +12,10 @@ import UIKit
 class GraphicCornerComplicationProvider: NewComplicationProvider {
     override var availableTemplateStyles: [TemplateStyle] {
         var availableTemplates = [TemplateStyle]()
-        availableTemplates.append(TemplateStyle(id: "templ_gc_1", previewImage: UIImage(named: "radialGraph10")!))
-        availableTemplates.append(TemplateStyle(id: "templ_gc_2", previewImage: UIImage(named: "radialGraph20")!))
-        availableTemplates.append(TemplateStyle(id: "templ_gc_3", previewImage: UIImage(named: "radialGraph30")!))
-        availableTemplates.append(TemplateStyle(id: "templ_gc_4", previewImage: UIImage(named: "radialGraph40")!))
+        availableTemplates.append(TemplateStyle(id: "templ_gc_1"))
+        availableTemplates.append(TemplateStyle(id: "templ_gc_2"))
+        availableTemplates.append(TemplateStyle(id: "templ_gc_3"))
+        availableTemplates.append(TemplateStyle(id: "templ_gc_4"))
         return availableTemplates
     }
 
@@ -28,5 +28,21 @@ class GraphicCornerComplicationProvider: NewComplicationProvider {
         availableColors.append(ColorStyle(id: "color_5", previewName: "Green", color: .appGreen))
         availableColors.append(ColorStyle(id: "color_6", previewName: "Cyan", color: .appCyan))
         return availableColors
+    }
+
+    override var defaultTemplateStyle: TemplateStyle {
+        return availableTemplateStyles[0]
+    }
+
+    override var defaultColorStyle: ColorStyle {
+        return availableColorStyles[0]
+    }
+
+    override func templateStyle(for id: String?) -> TemplateStyle {
+        return availableTemplateStyles.first(where: { $0.id == id }) ?? defaultTemplateStyle
+    }
+
+    override func colorStyle(for id: String?) -> ColorStyle {
+        return availableColorStyles.first(where: { $0.id == id }) ?? defaultColorStyle
     }
 }

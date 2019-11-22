@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ClockKit
 
 public class UserData {
     private let dataStore: DataStore
@@ -25,6 +26,61 @@ public class UserData {
         set {
             dataStore.write(value: newValue, key: .stepGoal)
             onDataChanged?()
+        }
+    }
+
+    public func setSelectedTemplateStyleId(for family: CLKComplicationFamily, templateStyleId: String) {
+        guard let familyId = family.dataCacheId else { return }
+        let key = "\(familyId)_templ"
+        dataStore.write(value: templateStyleId, key: key)
+    }
+
+    public func getSelectedTemplateStyleId(for family: CLKComplicationFamily) -> String? {
+        guard let familyId = family.dataCacheId else { return nil }
+        let key = "\(familyId)_templ"
+        return dataStore.read(key: key) as? String
+    }
+
+    public func setSelectedColorStyleId(for family: CLKComplicationFamily, colorStyleId: String) {
+        guard let familyId = family.dataCacheId else { return }
+        let key = "\(familyId)_color"
+        dataStore.write(value: colorStyleId, key: key)
+    }
+
+    public func getSelectedColorStyleId(for family: CLKComplicationFamily) -> String? {
+        guard let familyId = family.dataCacheId else { return nil }
+        let key = "\(familyId)_color"
+        return dataStore.read(key: key) as? String
+    }
+}
+
+extension CLKComplicationFamily {
+    var dataCacheId: String? {
+        switch self {
+        case .modularSmall:
+            return "sm"
+        case .modularLarge:
+            return "ml"
+        case .utilitarianSmall:
+            return "us"
+        case .utilitarianSmallFlat:
+            return "usf"
+        case .utilitarianLarge:
+            return "ul"
+        case .circularSmall:
+            return "cs"
+        case .extraLarge:
+            return "el"
+        case .graphicCorner:
+            return "gc"
+        case .graphicBezel:
+            return "gb"
+        case .graphicCircular:
+            return "gci"
+        case .graphicRectangular:
+            return "gr"
+        @unknown default:
+            return nil
         }
     }
 }

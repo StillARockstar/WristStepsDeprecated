@@ -36,20 +36,28 @@ class SetStyleListProvider: ObservableObject {
     }
 
     private func buildActiveList() {
-        activeComplicationFamilies.removeAll()
-
-        for family in clockConnector.getActiveComplicationFamilies() {
-            let thumbImage = Image(uiImage: clockConnector.selectedTemplateStyle(for: family)?.previewImage ?? UIImage())
-            activeComplicationFamilies.append(SetStyleListRowItem(family: family, thumbImage: thumbImage, title: family.appDisplayName))
-        }
+        activeComplicationFamilies = buildList(for: clockConnector.getActiveComplicationFamilies())
     }
 
     private func buildAllList() {
-        allComplicationFamilies.removeAll()
+        allComplicationFamilies = buildList(for: clockConnector.getAllSupportedComplicationFamilies())
+    }
 
-        for family in clockConnector.getAllSupportedComplicationFamilies() {
-            let thumbImage = Image(uiImage: clockConnector.selectedTemplateStyle(for: family)?.previewImage ?? UIImage())
-            allComplicationFamilies.append(SetStyleListRowItem(family: family, thumbImage: thumbImage, title: family.appDisplayName))
+    private func buildList(for families: [CLKComplicationFamily]) -> [SetStyleListRowItem] {
+        var itemList = [SetStyleListRowItem]()
+
+        for family in families {
+            let templateId = dataCache.userData.getSelectedTemplateStyleId(for: family)
+            let colorId = dataCache.userData.getSelectedColorStyleId(for: family)
+
+            guard let templateStyle = clockConnector.templateStyle(for: family, id: templateId) else { continue }
+            guard let colorStyle = clockConnector.colorStyle(for: family, id: colorId) else { continue }
+            
+            let thumbImage = Image(uiImage: templateStyle.previewImage(in: colorStyle) ?? UIImage())
+            let item = SetStyleListRowItem(family: family, thumbImage: thumbImage, title: family.appDisplayName)
+            itemList.append(item)
         }
+
+        return itemList
     }
 }

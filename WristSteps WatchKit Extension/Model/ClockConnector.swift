@@ -48,12 +48,12 @@ class ClockConnector {
         return NewComplicationProvider.complictionProvider(for: complicationFamily)?.availableColorStyles ?? []
     }
 
-    func selectedTemplateStyle(for complicationFamily: CLKComplicationFamily) -> TemplateStyle? {
-        return nil
+    func templateStyle(for complicationFamily: CLKComplicationFamily, id: String?) -> TemplateStyle? {
+        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.templateStyle(for: id)
     }
 
-    func selectedColorStyle(for complicationFamily: CLKComplicationFamily) -> ColorStyle? {
-        return nil
+    func colorStyle(for complicationFamily: CLKComplicationFamily, id: String?) -> ColorStyle? {
+        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.colorStyle(for: id)
     }
 }
 

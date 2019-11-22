@@ -33,7 +33,10 @@ class SetStyleDetailProvider: ObservableObject {
 
     private func buildStylePicker() {
         availableStylePreviews.removeAll()
-        availableStylePreviews = clockConnector.availableTemplateStyles(for: family).map({ Image(uiImage: $0.previewImage) })
+        availableStylePreviews = clockConnector.availableTemplateStyles(for: family).map() { item in
+            let colorStyle = clockConnector.availableColorStyles(for: family)[selectedColorIndex]
+            return Image(uiImage: item.previewImage(in: colorStyle) ?? UIImage())
+        }
     }
 
     private func buildColorPicker() {

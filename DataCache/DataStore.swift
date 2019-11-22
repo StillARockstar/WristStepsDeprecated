@@ -10,10 +10,18 @@ import Foundation
 
 class DataStore {
     func write(value: Any?, key: DataCacheEntryKey) {
-        UserDefaults.standard.set(value, forKey: key.rawValue)
+        write(value: value, key: key.rawValue)
     }
 
     func read(key: DataCacheEntryKey) -> Any? {
-        return UserDefaults.standard.object(forKey: key.rawValue)
+        return read(key: key.rawValue)
+    }
+
+    func write(value: Any?, key: String) {
+        UserDefaults.standard.set(value, forKey: key)
+    }
+
+    func read(key: String) -> Any? {
+        return UserDefaults.standard.object(forKey: key)
     }
 }
