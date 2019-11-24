@@ -33,12 +33,6 @@ class GraphicCornerComplicationBuilder: ComplicationBuilder {
             complicationTemplate.imageProvider = dataProvider.getFullColorImage(in: .circleGraph, colorStyle: colorStyle)
             complicationTemplate.tintColor = colorStyle.color
             return complicationTemplate
-        case "templ_gc_2":
-            let complicationTemplate = CLKComplicationTemplateGraphicCornerTextImage()
-            complicationTemplate.textProvider = dataProvider.getPercent(in: .long, colorStyle: colorStyle)
-            complicationTemplate.imageProvider = dataProvider.getFullColorImage(in: .circleGraph, colorStyle: colorStyle)
-            complicationTemplate.tintColor = colorStyle.color
-            return complicationTemplate
         default:
             return nil
         }

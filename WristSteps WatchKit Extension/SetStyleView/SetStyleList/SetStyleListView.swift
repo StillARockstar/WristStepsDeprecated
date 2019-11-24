@@ -26,6 +26,9 @@ struct SetStyleListView: View {
                 }
             }
         }
+        .onAppear {
+            self.provider.buildLists()
+        }
         .navigationBarTitle("Set Style")
     }
 

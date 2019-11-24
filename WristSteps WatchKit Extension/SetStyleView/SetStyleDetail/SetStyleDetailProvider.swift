@@ -16,14 +16,12 @@ class SetStyleDetailProvider: ObservableObject {
     let clockConnector: ClockConnector
     let family: CLKComplicationFamily
 
-    private(set) var availableStylePreviews: [Image] = []
-    private(set) var availableColorNames: [String] = []
+    @Published var previewImage: UIImage = UIImage()
 
-    @Published var selectedStyleIndex: Int = 0
+    private(set) var availableColorNames: [String] = []
     @Published var selectedColorIndex: Int = 0 {
         didSet {
-            print("Current selected: \(selectedColorIndex)")
-            buildStylePicker()
+            updatePreviewImage()
         }
     }
 
@@ -32,30 +30,31 @@ class SetStyleDetailProvider: ObservableObject {
         self.clockConnector = clockConnector
         self.family = family
 
-        buildStylePicker()
         buildColorPicker()
+        updatePreviewImage()
     }
 
-    private func buildStylePicker() {
-        availableStylePreviews = clockConnector.availableTemplateStyles(for: family).map() { item in
-            let colorStyle = clockConnector.availableColorStyles(for: family)[selectedColorIndex]
-            return Image(uiImage: item.previewImage(in: colorStyle) ?? UIImage())
-        }
+    private func updatePreviewImage() {
+        let templateId = dataCache.userData.getSelectedTemplateStyleId(for: family)
+        let colorId = clockConnector.availableColorStyles(for: family)[selectedColorIndex].id
+
+        guard let templateStyle = clockConnector.templateStyle(for: family, id: templateId) else { return }
+        guard let colorStyle = clockConnector.colorStyle(for: family, id: colorId) else { return }
+
+        previewImage = templateStyle.previewImage(in: colorStyle) ?? UIImage()
     }
 
     private func buildColorPicker() {
         availableColorNames = clockConnector.availableColorStyles(for: family).map({ $0.previewName })
+
+        let selectedColorStyleId = dataCache.userData.getSelectedColorStyleId(for: family)
+        let selectedIndex = clockConnector.availableColorStyles(for: family).firstIndex(where: { $0.id == selectedColorStyleId })
+        selectedColorIndex = selectedIndex ?? 0
     }
 
     func commitCurrentStyleConfiguration() {
-        let selectedStyle = clockConnector.availableTemplateStyles(for: family)[selectedStyleIndex]
         let selectedColor = clockConnector.availableColorStyles(for: family)[selectedColorIndex]
-
-        dataCache.userData.setSelectedTemplateStyleId(for: family, templateStyleId: selectedStyle.id)
         dataCache.userData.setSelectedColorStyleId(for: family, colorStyleId: selectedColor.id)
-        
         clockConnector.triggerComplicationUpdate()
-        print("Selected Style: \(selectedStyle.id)")
-        print("Selected Color: \(selectedColor.id)")
     }
 }

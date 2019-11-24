@@ -13,7 +13,6 @@ import DataCache
 struct SetStyleListRowItem {
     let family: CLKComplicationFamily
     let thumbImage: Image
-    let title: String
 }
 
 class SetStyleListProvider: ObservableObject {
@@ -54,7 +53,7 @@ class SetStyleListProvider: ObservableObject {
             guard let colorStyle = clockConnector.colorStyle(for: family, id: colorId) else { continue }
             
             let thumbImage = Image(uiImage: templateStyle.previewImage(in: colorStyle) ?? UIImage())
-            let item = SetStyleListRowItem(family: family, thumbImage: thumbImage, title: family.appDisplayName)
+            let item = SetStyleListRowItem(family: family, thumbImage: thumbImage)
             itemList.append(item)
         }
 

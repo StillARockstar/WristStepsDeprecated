@@ -13,16 +13,22 @@ struct SetStyleListRow: View {
 
     var body: some View {
         HStack {
-            rowItem.thumbImage
-            Text(rowItem.title)
-            Spacer()
+            HStack {
+                Spacer()
+                rowItem.thumbImage
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(5.0)
+                    .padding([.top, .bottom], 5.0)
+                Spacer()
+            }
         }
     }
 }
 
 struct SetStyleListRow_Previews: PreviewProvider {
     static var previews: some View {
-        SetStyleListRow(rowItem: SetStyleListRowItem(family: .graphicCircular, thumbImage: Image("radialGraph0"), title: "Graphic Circular"))
-            .previewLayout(.fixed(width: 150, height: 45))
+        SetStyleListRow(rowItem: SetStyleListRowItem(family: .graphicCircular, thumbImage: Image("preview_templ_gc_1_color_1")))
+            .previewLayout(.fixed(width: 150, height: 50))
     }
 }

@@ -19,23 +19,11 @@ struct SetStyleDetailView: View {
     var body: some View {
         VStack {
             HStack {
-                stepButton(systemName: "chevron.left") {
-                    print("left")
-                }
-                .padding(.leading, 7.0)
-
                 Spacer()
-
-                Image("preview_templ_gc_1_color_1")
+                Image(uiImage: provider.previewImage)
                     .resizable()
                     .frame(width: 60, height: 60)
-
                 Spacer()
-
-                stepButton(systemName: "chevron.right") {
-                    print("right")
-                }
-                .padding(.trailing, 7.0)
             }
             .frame(height: 68)
             Picker(selection: $provider.selectedColorIndex, label: Text("Color")) {

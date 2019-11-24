@@ -13,7 +13,6 @@ class GraphicCornerComplicationStyleManager: ComplicationStyleManager {
     override var availableTemplateStyles: [TemplateStyle] {
         var availableTemplates = [TemplateStyle]()
         availableTemplates.append(TemplateStyle(id: "templ_gc_1"))
-        availableTemplates.append(TemplateStyle(id: "templ_gc_2"))
         return availableTemplates
     }
 
