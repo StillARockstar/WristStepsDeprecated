@@ -11,8 +11,8 @@ import ClockKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
 
-    var provider: ComplicationProvider = {
-        return ComplicationProvider()
+    var oldProvider: OldComplicationProvider = {
+        return OldComplicationProvider()
     }()
 
     // MARK: - Timeline Configuration
@@ -28,7 +28,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
-        provider.dataCache.debugData.lastComplicationRefresh = Date()
+        oldProvider.dataCache.debugData.lastComplicationRefresh = Date()
 
         guard let complicationTemplate = getComplicationTemplate(for: complication.family) else {
             handler(nil)
@@ -44,61 +44,58 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch family {
         case .circularSmall:
             let template = CLKComplicationTemplateCircularSmallRingText()
-            template.textProvider = CLKTextProvider(format: provider.getPercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getPercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getPercentFloat() / 100.0
+            template.fillFraction = oldProvider.getPercentFloat() / 100.0
             return template
         case .modularSmall:
             let template = CLKComplicationTemplateModularSmallRingText()
-            template.textProvider = CLKTextProvider(format: provider.getPercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getPercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getPercentFloat() / 100.0
+            template.fillFraction = oldProvider.getPercentFloat() / 100.0
             return template
         case .modularLarge:
             let template = CLKComplicationTemplateModularLargeTallBody()
-            template.headerTextProvider = CLKTextProvider(format: provider.getPercentLongText())
-            template.bodyTextProvider = CLKTextProvider(format: provider.getStepTextShort())
+            template.headerTextProvider = CLKTextProvider(format: oldProvider.getPercentLongText())
+            template.bodyTextProvider = CLKTextProvider(format: oldProvider.getStepTextShort())
             return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
-            template.textProvider = CLKTextProvider(format: provider.getPercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getPercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getPercentFloat() / 100.0
+            template.fillFraction = oldProvider.getPercentFloat() / 100.0
             return template
         case .utilitarianSmallFlat:
             let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            template.textProvider = CLKTextProvider(format: provider.getPercentLongText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getPercentLongText())
             return template
         case .utilitarianLarge:
             let template = CLKComplicationTemplateUtilitarianLargeFlat()
-            template.textProvider = CLKTextProvider(format: provider.getStepText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getStepText())
             return template
         case .extraLarge:
             let template = CLKComplicationTemplateExtraLargeRingText()
-            template.textProvider = CLKTextProvider(format: provider.getPercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getPercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getPercentFloat() / 100.0
+            template.fillFraction = oldProvider.getPercentFloat() / 100.0
             return template
         case .graphicCorner:
-            let template = CLKComplicationTemplateGraphicCornerTextImage()
-            template.imageProvider = CLKFullColorImageProvider(fullColorImage: provider.getPercentImage())
-            template.textProvider = CLKTextProvider(format: provider.getStepText())
-            return template
+            return ComplicationProvider.appComplicationProvider.provider(for: .graphicCorner)?.buildComplication()
         case .graphicCircular:
             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText()
-            template.centerTextProvider = CLKTextProvider(format: provider.getPercentText())
-            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: provider.getPercentFloat() / 100.0)
+            template.centerTextProvider = CLKTextProvider(format: oldProvider.getPercentText())
+            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: oldProvider.getPercentFloat() / 100.0)
             return template
         case .graphicBezel:
             let template = CLKComplicationTemplateGraphicBezelCircularText()
-            template.textProvider = CLKTextProvider(format: provider.getStepStepGoalText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getStepStepGoalText())
             template.circularTemplate = getComplicationTemplate(for: .graphicCircular) as! CLKComplicationTemplateGraphicCircular
             return template
         case .graphicRectangular:
             let template = CLKComplicationTemplateGraphicRectangularTextGauge()
-            template.headerTextProvider = CLKTextProvider(format: provider.getStepStepGoalText())
-            template.body1TextProvider = CLKTextProvider(format: provider.getPercentText())
-            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: provider.getPercentFloat() / 100.0)
+            template.headerTextProvider = CLKTextProvider(format: oldProvider.getStepStepGoalText())
+            template.body1TextProvider = CLKTextProvider(format: oldProvider.getPercentText())
+            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: oldProvider.getPercentFloat() / 100.0)
             return nil
         @unknown default:
             return nil
@@ -120,61 +117,58 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch family {
         case .circularSmall:
             let template = CLKComplicationTemplateCircularSmallRingText()
-            template.textProvider = CLKTextProvider(format: provider.getSamplePercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSamplePercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getSamplePercentFloat() / 100.0
+            template.fillFraction = oldProvider.getSamplePercentFloat() / 100.0
             return template
         case .modularSmall:
             let template = CLKComplicationTemplateModularSmallRingText()
-            template.textProvider = CLKTextProvider(format: provider.getSamplePercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSamplePercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getSamplePercentFloat() / 100.0
+            template.fillFraction = oldProvider.getSamplePercentFloat() / 100.0
             return template
         case .modularLarge:
             let template = CLKComplicationTemplateModularLargeTallBody()
-            template.headerTextProvider = CLKTextProvider(format: provider.getSamplePercentLongText())
-            template.bodyTextProvider = CLKTextProvider(format: provider.getSampleStepTextShort())
+            template.headerTextProvider = CLKTextProvider(format: oldProvider.getSamplePercentLongText())
+            template.bodyTextProvider = CLKTextProvider(format: oldProvider.getSampleStepTextShort())
             return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
-            template.textProvider = CLKTextProvider(format: provider.getSamplePercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSamplePercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getSamplePercentFloat() / 100.0
+            template.fillFraction = oldProvider.getSamplePercentFloat() / 100.0
             return template
         case .utilitarianSmallFlat:
             let template = CLKComplicationTemplateUtilitarianSmallFlat()
-            template.textProvider = CLKTextProvider(format: provider.getSamplePercentLongText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSamplePercentLongText())
             return template
         case .utilitarianLarge:
             let template = CLKComplicationTemplateUtilitarianLargeFlat()
-            template.textProvider = CLKTextProvider(format: provider.getSampleStepText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSampleStepText())
             return template
         case .extraLarge:
             let template = CLKComplicationTemplateExtraLargeRingText()
-            template.textProvider = CLKTextProvider(format: provider.getSamplePercentText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSamplePercentText())
             template.ringStyle = .closed
-            template.fillFraction = provider.getSamplePercentFloat() / 100.0
+            template.fillFraction = oldProvider.getSamplePercentFloat() / 100.0
             return template
         case .graphicCorner:
-            let template = CLKComplicationTemplateGraphicCornerTextImage()
-            template.imageProvider = CLKFullColorImageProvider(fullColorImage: provider.getSamplePercentImage())
-            template.textProvider = CLKTextProvider(format: provider.getSampleStepText())
-            return template
+            return ComplicationProvider.sampleComplicationProvider.provider(for: .graphicCorner)?.buildComplication()
         case .graphicCircular:
             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText()
-            template.centerTextProvider = CLKTextProvider(format: provider.getSamplePercentText())
-            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: provider.getSamplePercentFloat() / 100.0)
+            template.centerTextProvider = CLKTextProvider(format: oldProvider.getSamplePercentText())
+            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: oldProvider.getSamplePercentFloat() / 100.0)
             return template
         case .graphicBezel:
             let template = CLKComplicationTemplateGraphicBezelCircularText()
-            template.textProvider = CLKTextProvider(format: provider.getSampleStepStepGoalText())
+            template.textProvider = CLKTextProvider(format: oldProvider.getSampleStepStepGoalText())
             template.circularTemplate = getComplicationSamplteTemplate(for: .graphicCircular) as! CLKComplicationTemplateGraphicCircular
             return template
         case .graphicRectangular:
             let template = CLKComplicationTemplateGraphicRectangularTextGauge()
-            template.headerTextProvider = CLKTextProvider(format: provider.getSampleStepStepGoalText())
-            template.body1TextProvider = CLKTextProvider(format: provider.getSamplePercentText())
-            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: provider.getSamplePercentFloat() / 100.0)
+            template.headerTextProvider = CLKTextProvider(format: oldProvider.getSampleStepStepGoalText())
+            template.body1TextProvider = CLKTextProvider(format: oldProvider.getSamplePercentText())
+            template.gaugeProvider = CLKSimpleGaugeProvider(style: .fill, gaugeColor: .appBlue, fillFraction: oldProvider.getSamplePercentFloat() / 100.0)
             return nil
         @unknown default:
             return nil

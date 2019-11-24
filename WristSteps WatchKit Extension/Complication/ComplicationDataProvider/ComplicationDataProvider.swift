@@ -21,10 +21,10 @@ enum ComplicationDataProviderImageStyle {
 }
 
 class ComplicationDataProvider {
-    private let dataCache: DataCache
+    let dataCache: DataCache
 
     private var sampleStepCount: Int {
-        return dataCache.healthData.stepCount
+        return 5000
     }
     private var sampleStepGoal: Int {
         return dataCache.userData.stepGoal
@@ -40,40 +40,38 @@ class ComplicationDataProvider {
         self.dataCache = dataCache
     }
 
-    func getSteps(in style: ComplicationDataProviderTextStyle) -> CLKTextProvider {
+    func getSteps(in style: ComplicationDataProviderTextStyle, colorStyle: ColorStyle) -> CLKTextProvider {
+        var textProvider: CLKTextProvider!
+
         switch style {
         case .long:
-            return CLKTextProvider(format: sampleStepCount.formattedString + " steps")
+            textProvider = CLKTextProvider(format: sampleStepCount.formattedString + " steps")
         case .short:
-            return CLKTextProvider(format: sampleStepCount.formattedString)
+            textProvider = CLKTextProvider(format: sampleStepCount.formattedString)
         case .shortened:
-            return CLKTextProvider(format: sampleStepCount.kFormattedString)
+            textProvider = CLKTextProvider(format: sampleStepCount.kFormattedString)
         }
+
+        textProvider.tintColor = colorStyle.color
+        return textProvider
     }
 
-    func getStepGoal(in style: ComplicationDataProviderTextStyle) -> CLKTextProvider {
+    func getPercent(in style: ComplicationDataProviderTextStyle, colorStyle: ColorStyle) -> CLKTextProvider {
+        var textProvider: CLKTextProvider!
         switch style {
         case .long:
-            return CLKTextProvider(format: sampleStepGoal.formattedString + " steps")
+            textProvider = CLKTextProvider(format: percentInt.formattedString + " percent")
         case .short:
-            return CLKTextProvider(format: sampleStepGoal.formattedString)
+            textProvider = CLKTextProvider(format: percentInt.formattedString + "%%")
         case .shortened:
-            return CLKTextProvider(format: sampleStepGoal.kFormattedString)
+            textProvider = CLKTextProvider(format: percentInt.kFormattedString)
         }
+
+        textProvider.tintColor = colorStyle.color
+        return textProvider
     }
 
-    func getPercent(in style: ComplicationDataProviderTextStyle) -> CLKTextProvider {
-        switch style {
-        case .long:
-            return CLKTextProvider(format: percentInt.formattedString + " percent")
-        case .short:
-            return CLKTextProvider(format: percentInt.formattedString + "%%")
-        case .shortened:
-            return CLKTextProvider(format: percentInt.kFormattedString)
-        }
-    }
-
-    func getImage(in style: ComplicationDataProviderImageStyle) -> CLKImageProvider {
+    func getFullColorImage(in style: ComplicationDataProviderImageStyle, colorStyle: ColorStyle) -> CLKFullColorImageProvider {
         switch style {
         case .circleGraph:
             var percentToDisplay = percentInt
@@ -81,7 +79,7 @@ class ComplicationDataProvider {
                 percentToDisplay = percentToDisplay % 100 + 100
             }
 
-            return CLKImageProvider(onePieceImage: UIImage(named:"radialGraph\(percentToDisplay)")!)
+            return CLKFullColorImageProvider(fullColorImage: UIImage(named:"radialGraph_\(colorStyle.id)_\(percentToDisplay)")!)
         }
     }
 }

@@ -14,12 +14,28 @@ struct SetStyleDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var provider: SetStyleDetailProvider
 
+    private let buttonHeight: CGFloat = 35.0
+
     var body: some View {
         VStack {
-            Picker(selection: $provider.selectedStyleIndex, label: Text("Style")) {
-                ForEach(0..<provider.availableStylePreviews.count) { index in
-                    self.provider.availableStylePreviews[index].tag(index)
+            HStack {
+                stepButton(systemName: "chevron.left") {
+                    print("left")
                 }
+                .padding(.leading, 7.0)
+
+                Spacer()
+
+                Image("preview_templ_gc_1_color_1")
+                    .resizable()
+                    .frame(width: 60, height: 60)
+
+                Spacer()
+
+                stepButton(systemName: "chevron.right") {
+                    print("right")
+                }
+                .padding(.trailing, 7.0)
             }
             .frame(height: 68)
             Picker(selection: $provider.selectedColorIndex, label: Text("Color")) {
@@ -37,6 +53,19 @@ struct SetStyleDetailView: View {
             .cornerRadius(40.0)
         }
         .navigationBarTitle("Back")
+    }
+
+    func stepButton(systemName: String, action: @escaping (() -> Void)) -> some View {
+        Button(action: {
+            action()
+        }) {
+            Image(systemName: systemName)
+                .font(.headline)
+                .foregroundColor(.black)
+        }
+        .background(Color.appBlue)
+        .frame(width: buttonHeight, height: buttonHeight, alignment: .center)
+        .cornerRadius(buttonHeight / 2.0)
     }
 }
 

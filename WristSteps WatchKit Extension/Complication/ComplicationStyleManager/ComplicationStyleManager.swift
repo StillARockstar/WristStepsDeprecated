@@ -13,7 +13,7 @@ struct TemplateStyle {
     var id: String
 
     func previewImage(in colorStyle: ColorStyle) -> UIImage? {
-        let imageKey = "compl_\(id)_\(colorStyle.id)"
+        let imageKey = "preview_\(id)_\(colorStyle.id)"
         return UIImage(named: imageKey)
     }
 }

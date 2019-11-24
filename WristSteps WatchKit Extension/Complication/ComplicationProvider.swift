@@ -1,98 +1,65 @@
 //
-//  ComplicationManager.swift
+//  ComplicationProvider.swift
 //  WristSteps WatchKit Extension
 //
-//  Created by Michael Schoder on 20.10.19.
+//  Created by Michael Schoder on 24.11.19.
 //  Copyright © 2019 Michael Schoder. All rights reserved.
 //
 
 import Foundation
-import UIKit
+import ClockKit
 import DataCache
 
+protocol ComplicationBuilder {
+    init(dataProvider: ComplicationDataProvider)
+    func buildComplication() -> CLKComplicationTemplate?
+}
+
 class ComplicationProvider {
-    var dataCache: DataCache = {
+    static var appComplicationProvider: ComplicationProvider = {
         let dataCache = AppDataCache()
         dataCache.prepare()
-        return dataCache
+        return ComplicationProvider(dataCache: dataCache)
     }()
 
-    func getStepText() -> String {
-        return dataCache.healthData.stepCount.formattedString + " steps"
+    static var sampleComplicationProvider: ComplicationProvider = {
+        let dataCache = SampleDataCache()
+        dataCache.prepare()
+        return ComplicationProvider(dataCache: dataCache)
+    }()
+
+    private let dataProvider: ComplicationDataProvider
+
+    init(dataCache: DataCache) {
+        self.dataProvider = ComplicationDataProvider(dataCache: dataCache)
     }
 
-    func getSampleStepText() -> String {
-        return 5000.formattedString + " steps"
-    }
-
-    func getStepTextShort() -> String {
-        return dataCache.healthData.stepCount.formattedString
-    }
-
-    func getSampleStepTextShort() -> String {
-        return 5000.formattedString
-    }
-
-    func getPercentFloat() -> Float {
-        let stepCount = dataCache.healthData.stepCount
-        let stepGoal = dataCache.userData.stepGoal
-
-        let calculatedPercent = Double(stepCount) / Double(stepGoal)
-        let stepPercent = Int(calculatedPercent * 100)
-
-        return Float(stepPercent)
-    }
-
-    func getSamplePercentFloat() -> Float {
-        return 50.0
-    }
-
-    func getPercentText() -> String {
-        return "\(Int(getPercentFloat()))"
-    }
-
-    func getSamplePercentText() -> String {
-        return "50"
-    }
-
-    func getPercentLongText() -> String {
-        return "\(Int(getPercentFloat()))%%"
-    }
-
-    func getSamplePercentLongText() -> String {
-        return "50%%"
-    }
-
-    func getPercentImage() -> UIImage {
-        var stepPercent = Int(getPercentFloat())
-
-        if stepPercent > 100 {
-            stepPercent = stepPercent % 100 + 100
+    func provider(for family: CLKComplicationFamily) -> ComplicationBuilder? {
+        switch family {
+        case .circularSmall:
+            return nil
+        case .modularSmall:
+            return nil
+        case .modularLarge:
+            return nil
+        case .utilitarianSmall:
+            return nil
+        case .utilitarianSmallFlat:
+            return nil
+        case .utilitarianLarge:
+            return nil
+        case .extraLarge:
+            return nil
+        case .graphicCorner:
+            return GraphicCornerComplicationBuilder(dataProvider: dataProvider)
+        case .graphicCircular:
+            return nil
+        case .graphicBezel:
+            return nil
+        case .graphicRectangular:
+            return nil
+        @unknown default:
+            return nil
         }
-
-        return UIImage(named:"radialGraph\(stepPercent)")!
-    }
-
-    func getSamplePercentImage() -> UIImage {
-        return UIImage(named:"radialGraph50")!
-    }
-
-    func getStepStepGoalText() -> String {
-        let stepCount = dataCache.healthData.stepCount
-        let stepGoal = dataCache.userData.stepGoal
-        return "\(stepCount) / \(stepGoal)"
-    }
-
-    func getSampleStepStepGoalText() -> String {
-        return "\(5000.formattedString) / \(10000.formattedString)"
-    }
-
-    func getGoalText() -> String {
-        let stepGoal = dataCache.userData.stepGoal
-        return "Goal: \(stepGoal) steps"
-    }
-
-    func getSampleGoalText() -> String {
-        return "Goal: \(10000.formattedString) steps"
     }
 }

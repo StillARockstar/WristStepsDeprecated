@@ -19,7 +19,7 @@ extension Color {
 }
 
 extension UIColor {
-    static let appBlue = UIColor(red: 30.0 / 255.0, green: 148.0 / 255.0, blue: 250.0 / 255.0, alpha: 1.0)
+    static let appBlue = UIColor(red: 2.0 / 255.0, green: 132.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
     static let appOrange = UIColor(red: 255.0 / 255.0, green: 89.0 / 255.0, blue: 22.0 / 255.0, alpha: 1.0)
     static let appRed = UIColor(red: 253.0 / 255.0, green: 55.0 / 255.0, blue: 95.0 / 255.0, alpha: 1.0)
     static let appViolet = UIColor(red: 188.0 / 255.0, green: 90.0 / 255.0, blue: 242.0 / 255.0, alpha: 1.0)

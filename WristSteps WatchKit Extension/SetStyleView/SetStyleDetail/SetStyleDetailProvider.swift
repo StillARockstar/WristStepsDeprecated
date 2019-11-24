@@ -20,7 +20,12 @@ class SetStyleDetailProvider: ObservableObject {
     private(set) var availableColorNames: [String] = []
 
     @Published var selectedStyleIndex: Int = 0
-    @Published var selectedColorIndex: Int = 0
+    @Published var selectedColorIndex: Int = 0 {
+        didSet {
+            print("Current selected: \(selectedColorIndex)")
+            buildStylePicker()
+        }
+    }
 
     init(dataCache: DataCache, clockConnector: ClockConnector, family: CLKComplicationFamily) {
         self.dataCache = dataCache
@@ -32,7 +37,6 @@ class SetStyleDetailProvider: ObservableObject {
     }
 
     private func buildStylePicker() {
-        availableStylePreviews.removeAll()
         availableStylePreviews = clockConnector.availableTemplateStyles(for: family).map() { item in
             let colorStyle = clockConnector.availableColorStyles(for: family)[selectedColorIndex]
             return Image(uiImage: item.previewImage(in: colorStyle) ?? UIImage())
@@ -40,13 +44,17 @@ class SetStyleDetailProvider: ObservableObject {
     }
 
     private func buildColorPicker() {
-        availableColorNames.removeAll()
         availableColorNames = clockConnector.availableColorStyles(for: family).map({ $0.previewName })
     }
 
     func commitCurrentStyleConfiguration() {
         let selectedStyle = clockConnector.availableTemplateStyles(for: family)[selectedStyleIndex]
         let selectedColor = clockConnector.availableColorStyles(for: family)[selectedColorIndex]
+
+        dataCache.userData.setSelectedTemplateStyleId(for: family, templateStyleId: selectedStyle.id)
+        dataCache.userData.setSelectedColorStyleId(for: family, colorStyleId: selectedColor.id)
+        
+        clockConnector.triggerComplicationUpdate()
         print("Selected Style: \(selectedStyle.id)")
         print("Selected Color: \(selectedColor.id)")
     }
