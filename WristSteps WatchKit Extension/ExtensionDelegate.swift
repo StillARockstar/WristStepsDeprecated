@@ -11,7 +11,7 @@ import ClockKit
 import DataCache
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-    let dataCache = DataCache()
+    let dataCache = AppDataCache()
     let clockConnector = ClockConnector()
     private var updateManager: UpdateManager!
 

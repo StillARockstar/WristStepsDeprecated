@@ -9,13 +9,11 @@
 import Foundation
 import UIKit
 
-class GraphicCornerComplicationProvider: NewComplicationProvider {
+class GraphicCornerComplicationStyleManager: ComplicationStyleManager {
     override var availableTemplateStyles: [TemplateStyle] {
         var availableTemplates = [TemplateStyle]()
         availableTemplates.append(TemplateStyle(id: "templ_gc_1"))
         availableTemplates.append(TemplateStyle(id: "templ_gc_2"))
-        availableTemplates.append(TemplateStyle(id: "templ_gc_3"))
-        availableTemplates.append(TemplateStyle(id: "templ_gc_4"))
         return availableTemplates
     }
 

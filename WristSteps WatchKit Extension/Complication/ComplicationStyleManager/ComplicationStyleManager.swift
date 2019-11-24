@@ -24,7 +24,7 @@ struct ColorStyle {
     let color: UIColor
 }
 
-class NewComplicationProvider {
+class ComplicationStyleManager {
 
     var availableTemplateStyles: [TemplateStyle] { fatalError("ComplicationProvider has to be subclassed") }
     var availableColorStyles: [ColorStyle] { fatalError("ComplicationProvider has to be subclassed") }
@@ -33,7 +33,7 @@ class NewComplicationProvider {
     func templateStyle(for id: String?) -> TemplateStyle! { fatalError("ComplicationProvider has to be subclassed") }
     func colorStyle(for id: String?) -> ColorStyle! { fatalError("ComplicationProvider has to be subclassed") }
 
-    static func complictionProvider(for family: CLKComplicationFamily) -> NewComplicationProvider? {
+    static func complicationStyleManager(for family: CLKComplicationFamily) -> ComplicationStyleManager? {
         switch family {
         case .circularSmall:
             return nil
@@ -50,7 +50,7 @@ class NewComplicationProvider {
         case .extraLarge:
             return nil
         case .graphicCorner:
-            return GraphicCornerComplicationProvider()
+            return GraphicCornerComplicationStyleManager()
         case .graphicCircular:
             return nil
         case .graphicBezel:

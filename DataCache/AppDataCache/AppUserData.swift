@@ -9,13 +9,13 @@
 import Foundation
 import ClockKit
 
-public class UserData {
+public class AppUserData: DataEntity, UserData {
     private let dataStore: DataStore
     private let defaultStepGoal = 10000
 
     var onDataChanged: (() -> Void)?
     
-    init(dataStore: DataStore) {
+    required init(dataStore: DataStore) {
         self.dataStore = dataStore
     }
 
@@ -51,36 +51,5 @@ public class UserData {
         guard let familyId = family.dataCacheId else { return nil }
         let key = "\(familyId)_color"
         return dataStore.read(key: key) as? String
-    }
-}
-
-extension CLKComplicationFamily {
-    var dataCacheId: String? {
-        switch self {
-        case .modularSmall:
-            return "sm"
-        case .modularLarge:
-            return "ml"
-        case .utilitarianSmall:
-            return "us"
-        case .utilitarianSmallFlat:
-            return "usf"
-        case .utilitarianLarge:
-            return "ul"
-        case .circularSmall:
-            return "cs"
-        case .extraLarge:
-            return "el"
-        case .graphicCorner:
-            return "gc"
-        case .graphicBezel:
-            return "gb"
-        case .graphicCircular:
-            return "gci"
-        case .graphicRectangular:
-            return "gr"
-        @unknown default:
-            return nil
-        }
     }
 }

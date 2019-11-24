@@ -46,6 +46,6 @@ struct SetStyleListView: View {
 
 struct SetStyleListView_Previews: PreviewProvider {
     static var previews: some View {
-        SetStyleListView().environmentObject(SetStyleListProvider(dataCache: DataCache(), clockConnector: ClockConnector()))
+        SetStyleListView().environmentObject(SetStyleListProvider(dataCache: SampleDataCache(), clockConnector: ClockConnector()))
     }
 }

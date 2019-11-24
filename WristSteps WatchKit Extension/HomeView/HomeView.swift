@@ -77,6 +77,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(HomeViewProvider(dataCache: DataCache(), clockConnector: ClockConnector()))
+        HomeView().environmentObject(HomeViewProvider(dataCache: SampleDataCache(), clockConnector: ClockConnector()))
     }
 }

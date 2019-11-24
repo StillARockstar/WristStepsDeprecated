@@ -41,19 +41,19 @@ class ClockConnector {
     }
 
     func availableTemplateStyles(for complicationFamily: CLKComplicationFamily) -> [TemplateStyle] {
-        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.availableTemplateStyles ?? []
+        return ComplicationStyleManager.complicationStyleManager(for: complicationFamily)?.availableTemplateStyles ?? []
     }
 
     func availableColorStyles(for complicationFamily: CLKComplicationFamily) -> [ColorStyle] {
-        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.availableColorStyles ?? []
+        return ComplicationStyleManager.complicationStyleManager(for: complicationFamily)?.availableColorStyles ?? []
     }
 
     func templateStyle(for complicationFamily: CLKComplicationFamily, id: String?) -> TemplateStyle? {
-        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.templateStyle(for: id)
+        return ComplicationStyleManager.complicationStyleManager(for: complicationFamily)?.templateStyle(for: id)
     }
 
     func colorStyle(for complicationFamily: CLKComplicationFamily, id: String?) -> ColorStyle? {
-        return NewComplicationProvider.complictionProvider(for: complicationFamily)?.colorStyle(for: id)
+        return ComplicationStyleManager.complicationStyleManager(for: complicationFamily)?.colorStyle(for: id)
     }
 }
 

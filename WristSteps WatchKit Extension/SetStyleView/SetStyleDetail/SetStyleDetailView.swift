@@ -42,6 +42,6 @@ struct SetStyleDetailView: View {
 
 struct SetStyleDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        SetStyleDetailView().environmentObject(SetStyleDetailProvider(dataCache: DataCache(), clockConnector: ClockConnector(), family: .graphicCircular))
+        SetStyleDetailView().environmentObject(SetStyleDetailProvider(dataCache: SampleDataCache(), clockConnector: ClockConnector(), family: .graphicCircular))
     }
 }

@@ -8,36 +8,7 @@
 
 import Foundation
 
-public enum DataCacheEntryKey: String {
-    case stepCount = "keyStepCount"
-    case stepGoal = "keyStepGoal"
-    case backgroundRefresh = "keyBackgroundRefresh"
-    case dataRefresh = "keyDataRefresh"
-    case complicationTrigger = "keyComplicationTrigger"
-    case complicationRefresh = "keyComplicationRefresh"
-    case stepCountUpdateResult = "keyStepCountUpdateResult"
-    case scheduleRefreshError = "keyScheduleRefreshError"
-    case pedometerStepCountError = "keyPedometerStepCountError"
-}
-
-public enum StepCountUpdateResult: String {
-    case pedometer = "Pedometer"
-    case noUpdate = "No Update"
-}
-
-public enum DataSetType {
-    case healthData
-    case userData
-    case debugData
-}
-
-public protocol DataCacheListener: class {
-    func healthDataChanged(_ dataCache: DataCache)
-    func userDataChanged(_ dataCache: DataCache)
-    func debugDataChanged(_ dataCache: DataCache)
-}
-
-public class DataCache {
+public class AppDataCache: DataCache {
     public var healthData: HealthData!
     public var userData: UserData!
     public var debugData: DebugData!
@@ -46,18 +17,18 @@ public class DataCache {
     private var userDataListeners = [DataCacheListener]()
     private var debugDataListeners = [DataCacheListener]()
 
-    public init() { }
+    required public init() { }
 
     public func prepare() {
         let dataStore = DataStore()
-        healthData = HealthData(dataStore: dataStore)
-        healthData.onDataChanged = onHealthDataChanged
+        healthData = AppHealthData(dataStore: dataStore)
+        (healthData as? DataEntity)?.onDataChanged = onHealthDataChanged
 
-        userData = UserData(dataStore: dataStore)
-        userData.onDataChanged = onUserDataChanged
+        userData = AppUserData(dataStore: dataStore)
+        (userData as? DataEntity)?.onDataChanged = onUserDataChanged
 
-        debugData = DebugData(dataStore: dataStore)
-        debugData.onDataChanged = onDebugDataChanged
+        debugData = AppDebugData(dataStore: dataStore)
+        (debugData as? DataEntity)?.onDataChanged = onDebugDataChanged
     }
 
     private func onHealthDataChanged() {
