@@ -24,7 +24,7 @@ class ComplicationDataProvider {
     let dataCache: DataCache
 
     private var sampleStepCount: Int {
-        return 5000
+        return dataCache.healthData.stepCount
     }
     private var sampleStepGoal: Int {
         return dataCache.userData.stepGoal
