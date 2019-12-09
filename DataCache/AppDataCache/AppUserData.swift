@@ -8,13 +8,13 @@
 
 import Foundation
 
-public class UserData {
+public class AppUserData: DataEntity, UserData {
     private let dataStore: DataStore
     private let defaultStepGoal = 10000
 
     var onDataChanged: (() -> Void)?
     
-    init(dataStore: DataStore) {
+    required init(dataStore: DataStore) {
         self.dataStore = dataStore
     }
 

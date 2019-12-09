@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class DebugData {
+public class AppDebugData: DataEntity, DebugData {
     private let dataStore: DataStore
 
     var onDataChanged: (() -> Void)?
 
-    init(dataStore: DataStore) {
+    required init(dataStore: DataStore) {
         self.dataStore = dataStore
     }
 

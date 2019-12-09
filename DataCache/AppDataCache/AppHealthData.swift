@@ -8,13 +8,13 @@
 
 import Foundation
 
-public class HealthData {
+public class AppHealthData: DataEntity, HealthData {
     private let dataStore: DataStore
     private let defaultStepCount = 0
 
     var onDataChanged: (() -> Void)?
 
-    init(dataStore: DataStore) {
+    required init(dataStore: DataStore) {
         self.dataStore = dataStore
     }
 

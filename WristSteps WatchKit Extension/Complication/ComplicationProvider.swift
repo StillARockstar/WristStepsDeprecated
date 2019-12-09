@@ -12,7 +12,7 @@ import DataCache
 
 class ComplicationProvider {
     var dataCache: DataCache = {
-        let dataCache = DataCache()
+        let dataCache = AppDataCache()
         dataCache.prepare()
         return dataCache
     }()
