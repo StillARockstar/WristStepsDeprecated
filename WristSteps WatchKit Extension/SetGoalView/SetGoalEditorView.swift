@@ -53,6 +53,6 @@ struct SetGoalEditorView: View {
 
 struct SetGoalEditorView_Previews: PreviewProvider {
     static var previews: some View {
-        SetGoalEditorView().environmentObject(SetGoalProvider(dataCache: DataCache(), initialGoal: 10000))
+        SetGoalEditorView().environmentObject(SetGoalProvider(dataCache: DataCache()))
     }
 }
