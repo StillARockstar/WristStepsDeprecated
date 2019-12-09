@@ -17,6 +17,8 @@ struct DebugView: View {
             VStack {
                 headlineValueView(headline: "Background refresh",
                                   value: provider.lastBackgroundRefreshString)
+                headlineValueView(headline: "Data refresh",
+                                  value: provider.lastDataRefreshString)
                 headlineValueView(headline: "Complication trigger",
                                   value: provider.lastComplicationTriggerString)
                 headlineValueView(headline: "Complication refresh",

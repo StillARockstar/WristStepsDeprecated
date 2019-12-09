@@ -78,7 +78,7 @@ class UpdateManager {
         loadingQueue.addOperation(operation2)
         loadingQueue.waitUntilAllOperationsAreFinished()
 
-        self.dataCache.debugData.lastBackgroundRefresh = Date()
+        self.dataCache.debugData.lastDataRefresh = Date()
         completion?()
     }
 }

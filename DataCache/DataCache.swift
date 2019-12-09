@@ -12,6 +12,7 @@ public enum DataCacheEntryKey: String {
     case stepCount = "keyStepCount"
     case stepGoal = "keyStepGoal"
     case backgroundRefresh = "keyBackgroundRefresh"
+    case dataRefresh = "keyDataRefresh"
     case complicationTrigger = "keyComplicationTrigger"
     case complicationRefresh = "keyComplicationRefresh"
     case stepCountUpdateResult = "keyStepCountUpdateResult"
